@@ -11,6 +11,22 @@
       </div>
     </section>
 
+    <!-- 轮播图 -->
+    <section class="page-container" v-if="banners.length > 0">
+      <el-carousel :interval="4000" type="card" height="280px">
+        <el-carousel-item v-for="b in banners" :key="b.id">
+          <a :href="b.linkUrl || '#'" target="_blank">
+            <img :src="b.imageUrl" :alt="b.title" style="width:100%;height:100%;object-fit:cover;border-radius:8px" />
+          </a>
+        </el-carousel-item>
+      </el-carousel>
+    </section>
+
+    <!-- 系统公告 -->
+    <section class="page-container" v-if="announcements.length > 0">
+      <el-alert v-for="a in announcements" :key="a.id" :title="a.title" type="info" :description="a.content" show-icon :closable="false" style="margin-bottom:8px" />
+    </section>
+
     <!-- 分类快捷入口 -->
     <section class="page-container">
       <h2 class="section-title">热门分类</h2>
@@ -43,19 +59,26 @@ import { ref, onMounted } from 'vue'
 import { getProductListAPI, getCategoryListAPI } from '@/api/product'
 import ProductCard from '@/components/ProductCard.vue'
 import SkeletonLoader from '@/components/SkeletonLoader.vue'
+import request from '@/api/request'
 
 const products = ref([])
 const categories = ref([])
+const banners = ref([])
+const announcements = ref([])
 const loading = ref(true)
 
 onMounted(async () => {
   try {
-    const [prodRes, catRes] = await Promise.all([
+    const [prodRes, catRes, banRes, annRes] = await Promise.all([
       getProductListAPI({ page: 1, size: 8, sortBy: 'view_desc' }),
-      getCategoryListAPI()
+      getCategoryListAPI(),
+      request.get('/banner/list').catch(() => ({data:{data:[]}})),
+      request.get('/announcement/list').catch(() => ({data:{data:[]}}))
     ])
     products.value = prodRes.data.data.records || []
     categories.value = catRes.data.data || []
+    banners.value = banRes.data.data || []
+    announcements.value = annRes.data.data || []
   } catch (e) {
     console.error('首页加载失败:', e)
   } finally {

@@ -42,7 +42,9 @@ public class WebSecurityConfig {
                 "/product/list",
                 "/product/detail/**",
                 "/review/list/**",
-                "/category/**"
+                "/category/**",
+                "/banner/list",
+                "/announcement/list"
             ).permitAll()
             // OPTIONS 预检请求
             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
