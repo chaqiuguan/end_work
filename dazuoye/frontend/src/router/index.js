@@ -55,6 +55,24 @@ const routes = [
     name: 'Checkout',
     component: () => import('@/views/Checkout.vue'),
     meta: { title: '确认订单', requiresAuth: true }
+  },
+  {
+    path: '/password-reset',
+    name: 'PasswordReset',
+    component: () => import('@/views/PasswordReset.vue'),
+    meta: { title: '找回密码' }
+  },
+  {
+    path: '/favorites',
+    name: 'FavoriteList',
+    component: () => import('@/views/FavoriteList.vue'),
+    meta: { title: '我的收藏', requiresAuth: true }
+  },
+  {
+    path: '/admin',
+    name: 'AdminDashboard',
+    component: () => import('@/views/AdminDashboard.vue'),
+    meta: { title: '管理后台', requiresAuth: true, requiresAdmin: true }
   }
 ]
 
@@ -73,8 +91,11 @@ router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
     const userStore = useUserStore()
     if (!userStore.token) {
-      // 未登录，跳转到登录页
       next({ name: 'Login', query: { redirect: to.fullPath } })
+      return
+    }
+    if (to.meta.requiresAdmin && !userStore.isAdmin) {
+      next({ name: 'Home' })
       return
     }
   }

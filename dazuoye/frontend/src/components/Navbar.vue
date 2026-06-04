@@ -53,6 +53,12 @@
                 <el-dropdown-item @click="$router.push('/order/list')">
                   <el-icon><Document /></el-icon>我的订单
                 </el-dropdown-item>
+                <el-dropdown-item @click="$router.push('/favorites')">
+                  <el-icon><Star /></el-icon>我的收藏
+                </el-dropdown-item>
+                <el-dropdown-item v-if="userStore.isAdmin" @click="$router.push('/admin')">
+                  <el-icon><Setting /></el-icon>管理后台
+                </el-dropdown-item>
                 <el-dropdown-item divided @click="handleLogout">
                   <el-icon><SwitchButton /></el-icon>退出登录
                 </el-dropdown-item>
