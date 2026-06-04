@@ -1,0 +1,175 @@
+<template>
+  <header class="navbar">
+    <div class="navbar-inner">
+      <!-- Logo -->
+      <router-link to="/" class="logo">
+        <span class="logo-icon">🐟</span>
+        <span class="logo-text">转鱼宝猫</span>
+      </router-link>
+
+      <!-- 搜索栏 -->
+      <div class="search-bar">
+        <el-input
+          v-model="keyword"
+          placeholder="搜索商品..."
+          size="large"
+          @keyup.enter="search"
+          clearable
+        >
+          <template #prefix>
+            <el-icon><Search /></el-icon>
+          </template>
+        </el-input>
+      </div>
+
+      <!-- 导航菜单 -->
+      <div class="nav-actions">
+        <router-link to="/product/list" class="nav-item">
+          <el-icon><Goods /></el-icon>
+          <span>全部商品</span>
+        </router-link>
+
+        <router-link to="/cart" class="nav-item cart-item">
+          <el-badge :value="cartStore.totalCount" :hidden="cartStore.totalCount === 0">
+            <el-icon><ShoppingCart /></el-icon>
+          </el-badge>
+          <span>购物车</span>
+        </router-link>
+
+        <!-- 用户菜单 -->
+        <template v-if="userStore.isLoggedIn">
+          <el-dropdown trigger="click">
+            <div class="nav-item user-item">
+              <el-avatar :size="32" :src="userStore.userInfo?.avatar">
+                {{ userStore.userInfo?.nickname?.charAt(0) || 'U' }}
+              </el-avatar>
+              <span class="user-name">{{ userStore.userInfo?.nickname }}</span>
+            </div>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item @click="$router.push('/user/center')">
+                  <el-icon><User /></el-icon>个人中心
+                </el-dropdown-item>
+                <el-dropdown-item @click="$router.push('/order/list')">
+                  <el-icon><Document /></el-icon>我的订单
+                </el-dropdown-item>
+                <el-dropdown-item divided @click="handleLogout">
+                  <el-icon><SwitchButton /></el-icon>退出登录
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </template>
+
+        <template v-else>
+          <router-link to="/login" class="nav-item login-btn">
+            <el-button type="primary" size="small">登录</el-button>
+          </router-link>
+        </template>
+      </div>
+    </div>
+  </header>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useUserStore } from '@/store/user'
+import { useCartStore } from '@/store/cart'
+import { ElMessageBox } from 'element-plus'
+
+const router = useRouter()
+const userStore = useUserStore()
+const cartStore = useCartStore()
+
+const keyword = ref('')
+
+function search() {
+  if (keyword.value.trim()) {
+    router.push({ path: '/product/list', query: { keyword: keyword.value.trim() } })
+  }
+}
+
+function handleLogout() {
+  ElMessageBox.confirm('确定要退出登录吗？', '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  }).then(() => {
+    userStore.logout()
+    cartStore.clearCart()
+    router.push('/')
+  }).catch(() => {})
+}
+</script>
+
+<style scoped>
+.navbar {
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.logo-icon { font-size: 24px; }
+.logo-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.search-bar {
+  flex: 1;
+  max-width: 480px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-size: 14px;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.nav-item:hover { color: var(--primary-color); }
+
+.user-item {
+  gap: 8px;
+}
+.user-name {
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .search-bar { display: none; }
+  .nav-item span { display: none; }
+}
+</style>
