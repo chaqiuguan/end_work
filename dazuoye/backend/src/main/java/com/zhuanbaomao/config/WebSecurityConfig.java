@@ -36,9 +36,12 @@ public class WebSecurityConfig {
                 "/user/register",
                 "/user/login",
                 "/user/send-code",
+                "/user/reset-code",
+                "/user/reset-password",
                 "/user/refresh-token",
                 "/product/list",
                 "/product/detail/**",
+                "/review/list/**",
                 "/category/**"
             ).permitAll()
             // OPTIONS 预检请求

@@ -186,7 +186,26 @@ CREATE TABLE IF NOT EXISTS `favorite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='商品收藏表';
 
 -- ============================================
--- 9. 秒杀活动表 (seckill) —— 预留扩展接口
+-- 9. 商品评价表 (review)
+-- ============================================
+CREATE TABLE IF NOT EXISTS `review` (
+    `id`            BIGINT          NOT NULL AUTO_INCREMENT  COMMENT '评价ID',
+    `user_id`       BIGINT          NOT NULL                 COMMENT '用户ID',
+    `product_id`    BIGINT          NOT NULL                 COMMENT '商品ID',
+    `order_id`      BIGINT          DEFAULT NULL             COMMENT '关联订单ID',
+    `content`       TEXT            NOT NULL                 COMMENT '评价内容',
+    `images`        JSON            DEFAULT NULL             COMMENT '评价图片',
+    `rating`        TINYINT         NOT NULL DEFAULT 5       COMMENT '评分 1-5',
+    `created_at`    DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `deleted`       TINYINT         NOT NULL DEFAULT 0       COMMENT '逻辑删除',
+    PRIMARY KEY (`id`),
+    KEY `idx_product_id` (`product_id`),
+    KEY `idx_user_id` (`user_id`),
+    KEY `idx_rating` (`rating`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='商品评价表';
+
+-- ============================================
+-- 10. 秒杀活动表 (seckill) —— 预留扩展接口
 -- ============================================
 CREATE TABLE IF NOT EXISTS `seckill` (
     `id`            BIGINT          NOT NULL AUTO_INCREMENT  COMMENT '秒杀活动ID',

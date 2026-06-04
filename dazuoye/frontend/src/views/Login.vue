@@ -1,28 +1,36 @@
 <template>
-  <div class="login-page">
-    <div class="login-card">
-      <h2 class="login-title">🐟 登录 转鱼宝猫</h2>
-      <p class="login-subtitle">支持用户名 / 邮箱登录</p>
+  <div class="auth-page">
+    <div class="auth-card">
+      <h2 class="auth-title">登录 转鱼宝猫</h2>
+      <p class="auth-subtitle">支持用户名 / 邮箱登录</p>
 
       <el-form ref="formRef" :model="form" :rules="rules" size="large" @submit.prevent="handleLogin">
         <el-form-item prop="username">
-          <el-input v-model="form.username" placeholder="用户名 / 邮箱" :prefix-icon="User" />
+          <el-input
+            v-model="form.username"
+            placeholder="用户名 / 邮箱"
+            :prefix-icon="User"
+          />
         </el-form-item>
 
         <el-form-item prop="password">
-          <el-input v-model="form.password" type="password" placeholder="密码"
-            :prefix-icon="Lock" show-password @keyup.enter="handleLogin" />
+          <el-input
+            v-model="form.password"
+            placeholder="密码"
+            :prefix-icon="Lock"
+            @keyup.enter="handleLogin"
+          />
         </el-form-item>
 
         <el-form-item>
-          <el-button type="danger" native-type="submit" :loading="loading" block round>
-            登录
+          <el-button type="danger" native-type="submit" :loading="loading" block round size="large">
+            登 录
           </el-button>
         </el-form-item>
       </el-form>
 
-      <div class="login-extra">
-        <router-link to="/register">还没有账号？立即注册 →</router-link>
+      <div class="auth-extra">
+        <router-link to="/register">还没有账号？立即注册</router-link>
       </div>
     </div>
   </div>
@@ -50,7 +58,7 @@ const form = reactive({
 })
 
 const rules = {
-  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+  username: [{ required: true, message: '请输入用户名或邮箱', trigger: 'blur' }],
   password: [
     { required: true, message: '请输入密码', trigger: 'blur' },
     { min: 6, message: '密码至少6位', trigger: 'blur' }
@@ -65,13 +73,11 @@ async function handleLogin() {
   try {
     await userStore.login(form.username, form.password)
     ElMessage.success('登录成功')
-    // 加载购物车
     await cartStore.fetchCart()
-    // 跳转到原始目标页面
     const redirect = route.query.redirect || '/'
     router.push(redirect)
   } catch (e) {
-    // 错误已由拦截器处理
+    // 已由拦截器处理
   } finally {
     loading.value = false
   }
@@ -79,39 +85,45 @@ async function handleLogin() {
 </script>
 
 <style scoped>
-.login-page {
+.auth-page {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 70vh;
-  padding: 20px;
+  min-height: 80vh;
+  padding: 40px 20px;
 }
 
-.login-card {
+.auth-card {
   width: 100%;
-  max-width: 420px;
+  max-width: 480px;
   background: #fff;
   border-radius: 12px;
   padding: 40px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
 }
 
-.login-title {
+.auth-title {
   text-align: center;
   font-size: 24px;
+  font-weight: 600;
   margin-bottom: 8px;
+  color: var(--text-primary);
 }
 
-.login-subtitle {
+.auth-subtitle {
   text-align: center;
   color: var(--text-secondary);
   font-size: 14px;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 }
 
-.login-extra {
+.auth-extra {
   text-align: center;
   font-size: 14px;
+  margin-top: 8px;
 }
-.login-extra a { color: var(--primary-color); }
+.auth-extra a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
 </style>

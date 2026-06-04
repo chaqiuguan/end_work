@@ -1,50 +1,72 @@
 <template>
-  <div class="login-page">
-    <div class="login-card">
-      <h2 class="login-title">📝 注册账号</h2>
+  <div class="auth-page">
+    <div class="auth-card">
+      <h2 class="auth-title">注册账号</h2>
 
       <el-form ref="formRef" :model="form" :rules="rules" size="large" @submit.prevent="handleRegister">
+        <!-- 邮箱 + 获取验证码 -->
         <el-form-item prop="email">
-          <el-input v-model="form.email" placeholder="邮箱" :prefix-icon="Message">
-            <template #append>
-              <el-button
-                :disabled="countdown > 0"
-                :loading="sendingCode"
-                @click="sendCode"
-              >
-                {{ countdown > 0 ? `${countdown}s` : '获取验证码' }}
-              </el-button>
-            </template>
-          </el-input>
+          <div class="email-row">
+            <el-input
+              v-model="form.email"
+              placeholder="请输入邮箱"
+              :prefix-icon="Message"
+              class="email-input"
+            />
+            <el-button
+              class="code-btn"
+              :disabled="countdown > 0"
+              :loading="sendingCode"
+              @click="sendCode"
+            >
+              {{ countdown > 0 ? `${countdown}s后重发` : '获取验证码' }}
+            </el-button>
+          </div>
         </el-form-item>
 
         <el-form-item prop="code">
-          <el-input v-model="form.code" placeholder="请输入6位验证码" :prefix-icon="Key" maxlength="6" />
+          <el-input
+            v-model="form.code"
+            placeholder="请输入6位验证码"
+            :prefix-icon="Key"
+            maxlength="6"
+          />
         </el-form-item>
 
         <el-form-item prop="username">
-          <el-input v-model="form.username" placeholder="用户名（3-50个字符）" :prefix-icon="User" />
+          <el-input
+            v-model="form.username"
+            placeholder="用户名（3-50个字符）"
+            :prefix-icon="User"
+          />
         </el-form-item>
 
         <el-form-item prop="password">
-          <el-input v-model="form.password" type="password" placeholder="密码（至少6位）"
-            :prefix-icon="Lock" show-password />
+          <el-input
+            v-model="form.password"
+            placeholder="密码（至少6位）"
+            :prefix-icon="Lock"
+          />
         </el-form-item>
 
         <el-form-item prop="confirmPassword">
-          <el-input v-model="form.confirmPassword" type="password" placeholder="确认密码（再次输入）"
-            :prefix-icon="Lock" show-password />
+          <el-input
+            v-model="form.confirmPassword"
+            type="password"
+            placeholder="确认密码"
+            :prefix-icon="Lock"
+          />
         </el-form-item>
 
         <el-form-item>
-          <el-button type="danger" native-type="submit" :loading="loading" block round>
-            注册
+          <el-button type="danger" native-type="submit" :loading="loading" block round size="large">
+            注 册
           </el-button>
         </el-form-item>
       </el-form>
 
-      <div class="login-extra">
-        <router-link to="/login">已有账号？去登录 →</router-link>
+      <div class="auth-extra">
+        <router-link to="/login">已有账号？去登录</router-link>
       </div>
     </div>
   </div>
@@ -108,9 +130,7 @@ const rules = {
   ]
 }
 
-/** 发送验证码 */
 async function sendCode() {
-  // 先校验邮箱
   if (!form.email) {
     ElMessage.warning('请先输入邮箱')
     return
@@ -125,7 +145,6 @@ async function sendCode() {
     await request.post('/user/send-code', { email: form.email })
     ElMessage.success('验证码已发送，请查收邮件')
 
-    // 60秒倒计时
     countdown.value = 60
     countdownTimer = setInterval(() => {
       countdown.value--
@@ -135,13 +154,12 @@ async function sendCode() {
       }
     }, 1000)
   } catch (e) {
-    // 错误已由拦截器处理
+    // 已由拦截器处理
   } finally {
     sendingCode.value = false
   }
 }
 
-/** 注册 */
 async function handleRegister() {
   const valid = await formRef.value.validate().catch(() => false)
   if (!valid) return
@@ -164,39 +182,53 @@ async function handleRegister() {
 </script>
 
 <style scoped>
-.login-page {
+.auth-page {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 70vh;
-  padding: 20px;
+  min-height: 80vh;
+  padding: 40px 20px;
 }
-.login-card {
+
+.auth-card {
   width: 100%;
-  max-width: 440px;
+  max-width: 480px;
   background: #fff;
   border-radius: 12px;
   padding: 40px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
 }
-.login-title {
+
+.auth-title {
   text-align: center;
   font-size: 24px;
-  margin-bottom: 30px;
+  font-weight: 600;
+  margin-bottom: 32px;
+  color: var(--text-primary);
 }
-.login-extra {
+
+.auth-extra {
   text-align: center;
   font-size: 14px;
+  margin-top: 8px;
 }
-.login-extra a { color: var(--primary-color); }
+.auth-extra a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
 
-/* Element Plus input-group append button styling */
-:deep(.el-input-group__append) {
-  padding: 0;
+/* 邮箱 + 获取验证码按钮 */
+.email-row {
+  display: flex;
+  align-items: stretch;
 }
-:deep(.el-input-group__append .el-button) {
-  border: none;
-  height: 100%;
-  padding: 0 12px;
+.email-input {
+  flex: 1;
+}
+.code-btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+  border-radius: 0 8px 8px 0;
+  margin-left: -1px;
 }
 </style>

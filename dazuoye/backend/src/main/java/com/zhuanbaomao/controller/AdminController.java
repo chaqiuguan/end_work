@@ -4,19 +4,19 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zhuanbaomao.common.Result;
 import com.zhuanbaomao.config.BusinessException;
-import com.zhuanbaomao.entity.Order;
-import com.zhuanbaomao.entity.Product;
-import com.zhuanbaomao.entity.User;
-import com.zhuanbaomao.mapper.OrderItemMapper;
-import com.zhuanbaomao.mapper.OrderMapper;
-import com.zhuanbaomao.mapper.ProductMapper;
-import com.zhuanbaomao.mapper.UserMapper;
+import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zhuanbaomao.common.Result;
+import com.zhuanbaomao.config.BusinessException;
+import com.zhuanbaomao.entity.*;
+import com.zhuanbaomao.mapper.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 管理后台控制器 —— 简易版（需管理员权限）
@@ -30,6 +30,7 @@ public class AdminController {
     private final OrderMapper orderMapper;
     private final OrderItemMapper orderItemMapper;
     private final UserMapper userMapper;
+    private final CategoryMapper categoryMapper;
 
     // ==================== 商品审核 ====================
 
@@ -129,5 +130,119 @@ public class AdminController {
         user.setStatus(1);
         userMapper.updateById(user);
         return Result.success("用户已解封");
+    }
+
+    /** 用户列表（搜索，脱敏） */
+    @GetMapping("/user/list")
+    public Result<?> userList(@RequestParam(defaultValue = "") String keyword,
+                              @RequestParam(defaultValue = "1") int page,
+                              @RequestParam(defaultValue = "20") int size) {
+        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<User>();
+        if (StrUtil.isNotBlank(keyword)) {
+            wrapper.and(w -> w.like(User::getUsername, keyword)
+                    .or().like(User::getPhone, keyword)
+                    .or().like(User::getNickname, keyword));
+        }
+        wrapper.orderByDesc(User::getCreatedAt);
+        Page<User> userPage = userMapper.selectPage(new Page<>(page, size), wrapper);
+
+        // 脱敏：移除密码字段
+        List<Map<String, Object>> safeRecords = userPage.getRecords().stream().map(u -> {
+            Map<String, Object> m = new HashMap<>();
+            m.put("id", u.getId());
+            m.put("username", u.getUsername());
+            m.put("nickname", u.getNickname());
+            m.put("email", u.getEmail());
+            m.put("phone", u.getPhone());
+            m.put("avatar", u.getAvatar());
+            m.put("role", u.getRole());
+            m.put("status", u.getStatus());
+            m.put("points", u.getPoints());
+            m.put("lastLoginAt", u.getLastLoginAt());
+            m.put("createdAt", u.getCreatedAt());
+            return m;
+        }).collect(Collectors.toList());
+
+        return Result.success(Map.of(
+            "page", userPage.getCurrent(), "size", userPage.getSize(),
+            "total", userPage.getTotal(), "records", safeRecords
+        ));
+    }
+
+    /** 用户详情 */
+    @GetMapping("/user/detail/{id}")
+    public Result<?> userDetail(@PathVariable Long id) {
+        User user = userMapper.selectById(id);
+        if (user == null) throw new BusinessException("用户不存在");
+        Map<String, Object> detail = new HashMap<>();
+        detail.put("id", user.getId());
+        detail.put("username", user.getUsername());
+        detail.put("nickname", user.getNickname());
+        detail.put("email", user.getEmail());
+        detail.put("phone", user.getPhone());
+        detail.put("avatar", user.getAvatar());
+        detail.put("role", user.getRole());
+        detail.put("status", user.getStatus());
+        detail.put("points", user.getPoints());
+        detail.put("lastLoginAt", user.getLastLoginAt());
+        detail.put("createdAt", user.getCreatedAt());
+        return Result.success(detail);
+    }
+
+    // ==================== 分类管理 ====================
+
+    @GetMapping("/category/list")
+    public Result<?> categoryList() {
+        return Result.success(categoryMapper.selectList(
+                new LambdaQueryWrapper<Category>().orderByAsc(Category::getSortOrder)));
+    }
+
+    @PostMapping("/category/add")
+    public Result<?> categoryAdd(@RequestBody Category cat) {
+        categoryMapper.insert(cat);
+        return Result.success("分类添加成功");
+    }
+
+    @PutMapping("/category/{id}")
+    public Result<?> categoryUpdate(@PathVariable Long id, @RequestBody Category cat) {
+        cat.setId(id);
+        categoryMapper.updateById(cat);
+        return Result.success("分类更新成功");
+    }
+
+    @DeleteMapping("/category/{id}")
+    public Result<?> categoryDelete(@PathVariable Long id) {
+        categoryMapper.deleteById(id);
+        return Result.success("分类已删除");
+    }
+
+    // ==================== 商品删除 ====================
+
+    @DeleteMapping("/product/{id}")
+    public Result<?> deleteProduct(@PathVariable Long id) {
+        Product p = productMapper.selectById(id);
+        if (p == null) throw new BusinessException("商品不存在");
+        productMapper.deleteById(id);
+        return Result.success("商品已删除");
+    }
+
+    // ==================== 订单导出 ====================
+
+    @GetMapping("/order/export")
+    public Result<?> exportOrders() {
+        List<Order> orders = orderMapper.selectList(
+                new LambdaQueryWrapper<Order>().orderByDesc(Order::getCreatedAt));
+        List<Map<String, Object>> data = orders.stream().map(o -> {
+            Map<String, Object> m = new HashMap<>();
+            m.put("orderNo", o.getOrderNo());
+            m.put("userId", o.getUserId());
+            m.put("payAmount", o.getPayAmount());
+            m.put("status", o.getStatus());
+            m.put("receiverName", o.getReceiverName());
+            m.put("receiverPhone", o.getReceiverPhone());
+            m.put("createdAt", o.getCreatedAt());
+            return m;
+        }).collect(Collectors.toList());
+        return Result.success(data);
     }
 }
