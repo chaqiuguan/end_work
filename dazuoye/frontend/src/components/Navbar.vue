@@ -75,25 +75,69 @@
       </div>
     </div>
   </header>
+
+    <!-- 分类导航栏 -->
+    <nav class="category-bar">
+      <div class="category-inner">
+        <router-link
+          to="/product/list"
+          class="cat-link"
+          :class="{ active: activeCat === 0 }"
+          @click="activeCat = 0"
+        >
+          🔥 全部
+        </router-link>
+        <router-link
+          v-for="cat in categories"
+          :key="cat.id"
+          :to="`/product/list?categoryId=${cat.id}`"
+          class="cat-link"
+          :class="{ active: activeCat === cat.id }"
+          @click="activeCat = cat.id"
+        >
+          {{ cat.name }}
+        </router-link>
+      </div>
+    </nav>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, onMounted, watch } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { useUserStore } from '@/store/user'
 import { useCartStore } from '@/store/cart'
 import { ElMessageBox } from 'element-plus'
+import { getCategoryListAPI } from '@/api/product'
 
 const router = useRouter()
+const route = useRoute()
 const userStore = useUserStore()
 const cartStore = useCartStore()
 
 const keyword = ref('')
+const categories = ref([])
+const activeCat = ref(0)
 
 function search() {
   if (keyword.value.trim()) {
     router.push({ path: '/product/list', query: { keyword: keyword.value.trim() } })
   }
+}
+
+onMounted(async () => {
+  try {
+    const res = await getCategoryListAPI()
+    categories.value = res.data.data || []
+    syncActiveCat()
+  } catch {}
+})
+
+// 路由变化时同步分类高亮
+watch(() => route.query.categoryId, () => syncActiveCat())
+
+function syncActiveCat() {
+  const catId = route.query.categoryId
+  activeCat.value = catId ? Number(catId) : 0
 }
 
 function handleLogout() {
@@ -172,6 +216,43 @@ function handleLogout() {
   max-width: 80px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* 分类导航栏 */
+.category-bar {
+  background: #fff;
+  border-top: 1px solid var(--border-color);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.category-bar::-webkit-scrollbar { display: none; }
+
+.category-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  gap: 4px;
+  height: 42px;
+  align-items: center;
+}
+
+.cat-link {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  border-radius: 20px;
+  transition: all 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.cat-link:hover { color: var(--primary-color); background: var(--primary-light); }
+.cat-link.active {
+  color: #fff;
+  background: var(--primary-color);
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {

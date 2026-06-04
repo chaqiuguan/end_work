@@ -44,8 +44,10 @@
         <el-form-item prop="password">
           <el-input
             v-model="form.password"
+            type="password"
             placeholder="密码（至少6位）"
             :prefix-icon="Lock"
+            show-password
           />
         </el-form-item>
 

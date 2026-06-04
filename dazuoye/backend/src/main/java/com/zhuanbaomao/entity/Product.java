@@ -56,6 +56,9 @@ public class Product {
     /** 标签 (JSON字符串) */
     private String tags;
 
+    /** 商品参数 (JSON对象, e.g. {"颜色":"黑","尺寸":"15寸"}) */
+    private String specs;
+
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createdAt;
 

@@ -6,6 +6,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 商品信息返回体
@@ -34,6 +35,7 @@ public class ProductVO {
     private Integer viewCount;
     private Integer favoriteCount;
     private List<String> tags;
+    private Map<String, String> specs;
 
     private LocalDateTime createdAt;
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <h2 class="page-title">商品列表</h2>
+    <h2 class="page-title">{{ pageTitle }}</h2>
 
     <!-- 筛选栏 -->
     <div class="filter-bar">
@@ -55,7 +55,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { getProductListAPI, getCategoryListAPI } from '@/api/product'
 import ProductCard from '@/components/ProductCard.vue'
@@ -67,6 +67,16 @@ const products = ref([])
 const categories = ref([])
 const total = ref(0)
 const loading = ref(true)
+
+// 动态标题：显示当前分类名称或搜索关键词
+const pageTitle = computed(() => {
+  if (filters.keyword) return `搜索: "${filters.keyword}"`
+  if (filters.categoryId) {
+    const cat = categories.value.find(c => c.id === filters.categoryId)
+    return cat ? cat.name : '商品列表'
+  }
+  return '全部商品'
+})
 
 const filters = reactive({
   keyword: '',
@@ -106,15 +116,26 @@ function handlePageChange({ page, size }) {
 }
 
 onMounted(async () => {
-  // 从路由参数获取初始筛选条件（首页搜索跳转等）
-  if (route.query.keyword) filters.keyword = route.query.keyword
-  if (route.query.categoryId) filters.categoryId = Number(route.query.categoryId)
-
   const catRes = await getCategoryListAPI()
   categories.value = catRes.data.data || []
-
+  // 首次加载时从 URL 读取参数
+  updateFiltersFromRoute()
   searchProducts()
 })
+
+// 监听路由变化，切换分类/搜索时自动刷新商品列表
+watch(() => route.query, () => {
+  updateFiltersFromRoute()
+  filters.page = 1
+  searchProducts()
+})
+
+function updateFiltersFromRoute() {
+  if (route.query.keyword) filters.keyword = route.query.keyword
+  else filters.keyword = ''
+  if (route.query.categoryId) filters.categoryId = Number(route.query.categoryId)
+  else filters.categoryId = null
+}
 </script>
 
 <style scoped>

@@ -10,12 +10,12 @@
         <!-- 图片轮播 -->
         <div class="detail-gallery">
           <img
-            v-if="product.images?.length"
-            :src="currentImage"
+            :src="currentImage || '/placeholder.png'"
             :alt="product.title"
             class="main-image"
+            @error="$event.target.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23f5f5f5%22 width=%22200%22 height=%22200%22/><text x=%22100%22 y=%22110%22 text-anchor=%22middle%22 fill=%22%23ccc%22 font-size=%2248%22>🐟</text></svg>'"
           />
-          <div class="thumb-list">
+          <div v-if="product.images?.length" class="thumb-list">
             <img
               v-for="(img, idx) in product.images"
               :key="idx"
@@ -51,16 +51,25 @@
             <span v-else class="out-stock">已售罄</span>
           </div>
 
+          <!-- 商品参数 -->
+          <div v-if="product.specs && Object.keys(product.specs).length > 0" class="specs-table">
+            <div v-for="(val, key) in product.specs" :key="key" class="spec-row">
+              <span class="spec-label">{{ key }}</span>
+              <span class="spec-value">{{ val }}</span>
+            </div>
+          </div>
+
           <!-- 操作按钮 -->
           <div class="action-row">
             <el-input-number
               v-model="quantity"
               :min="1"
-              :max="product.stock"
+              :max="Math.max(product.stock, 1)"
+              :disabled="product.stock <= 0"
               size="large"
             />
-            <el-button type="danger" size="large" @click="addToCart" :loading="addingCart">
-              🛒 加入购物车
+            <el-button type="danger" size="large" @click="addToCart" :loading="addingCart" :disabled="product.stock <= 0">
+              {{ product.stock <= 0 ? '已售罄' : '🛒 加入购物车' }}
             </el-button>
             <el-button size="large" @click="toggleFavorite">
               {{ isFavorited ? '❤️ 已收藏' : '🤍 收藏' }}
@@ -132,6 +141,8 @@ onMounted(async () => {
     reviews.value = revRes.data.data.records || []
     if (product.value?.images?.length) {
       currentImage.value = product.value.images[0]
+    } else {
+      currentImage.value = ''
     }
   } catch {
     product.value = null
@@ -242,9 +253,30 @@ async function submitReview() {
   margin-bottom: 12px;
 }
 
-.stock-row { margin-bottom: 20px; }
+.stock-row { margin-bottom: 16px; }
 .in-stock { color: var(--success-color); }
 .out-stock { color: var(--primary-color); }
+
+.specs-table {
+  margin-bottom: 20px;
+  background: var(--bg-gray);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.spec-row {
+  display: flex;
+  padding: 10px 14px;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 14px;
+}
+.spec-row:last-child { border-bottom: none; }
+.spec-label {
+  color: var(--text-secondary);
+  min-width: 64px;
+}
+.spec-value {
+  color: var(--text-primary);
+}
 
 .action-row {
   display: flex;

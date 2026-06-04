@@ -89,7 +89,7 @@
         <el-table :data="feedbacks"><el-table-column prop="userName" label="用户"/><el-table-column prop="content" label="内容" width="300"/><el-table-column prop="reply" label="回复"/>
           <el-table-column prop="status" label="状态"><template #default="{row}"><el-tag :type="row.status?'success':'warning'">{{row.status?'已回复':'待处理'}}</el-tag></template></el-table-column>
           <el-table-column label="操作" width="120"><template #default="{row}"><el-button v-if="!row.status" size="small" type="primary" @click="replyFbId=row.id;replyText=''">回复</el-button></template></el-table-column></el-table>
-        <el-dialog v-model="!!replyFbId" title="回复反馈" @close="replyFbId=null"><el-input v-model="replyText" type="textarea" :rows="4" placeholder="输入回复..."/><template #footer><el-button @click="replyFbId=null">取消</el-button><el-button type="primary" @click="doReply">回复</el-button></template></el-dialog>
+        <el-dialog :model-value="!!replyFbId" title="回复反馈" @update:model-value="replyFbId=null"><el-input v-model="replyText" type="textarea" :rows="4" placeholder="输入回复..."/><template #footer><el-button @click="replyFbId=null">取消</el-button><el-button type="primary" @click="doReply">回复</el-button></template></el-dialog>
       </div>
 
       <!-- ===== Reviews ===== -->
@@ -104,8 +104,14 @@
 <script setup>
 import { ref, reactive, onMounted, nextTick, watch } from 'vue'
 import { DataAnalysis, User, Goods, Document, Menu, Picture, Ticket, Bell, ChatDotRound, Star } from '@element-plus/icons-vue'
-import * as echarts from 'echarts'
 import request from '@/api/request'
+
+// 懒加载 echarts（仅在数据看板 tab 使用时加载）
+let echartsModule = null
+async function getEcharts() {
+  if (!echartsModule) echartsModule = await import('echarts')
+  return echartsModule.init
+}
 import Pagination from '@/components/Pagination.vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 
@@ -123,14 +129,15 @@ async function loadDashboard() {
   await nextTick()
   renderCharts(os, hp)
 }
-function renderCharts(orderData, hotData) {
+async function renderCharts(orderData, hotData) {
   const labels = ['待付款','待发货','待收货','已完成','已取消']
+  const init = await getEcharts()
   if (orderChartDom.value) {
-    const c1 = echarts.init(orderChartDom.value)
+    const c1 = init(orderChartDom.value)
     c1.setOption({ tooltip:{}, series:[{type:'pie',radius:['40%','70%'],data:Object.entries(orderData).map(([k,v])=>({name:labels[Number(k)],value:v})),label:{show:true}}] })
   }
   if (hotChartDom.value) {
-    const c2 = echarts.init(hotChartDom.value)
+    const c2 = init(hotChartDom.value)
     c2.setOption({ tooltip:{}, xAxis:{type:'category',data:hotData.map(h=>h.title?.substring(0,8))}, yAxis:{type:'value'}, series:[{type:'bar',data:hotData.map(h=>h.viewCount||0),itemStyle:{color:'#e74c3c'}}] })
   }
 }
@@ -191,9 +198,26 @@ const reviewList=ref([])
 async function fetchReviews(){try{const r=await request.get('/review/list/1');reviewList.value=r.data.data.records||[]}catch{}}
 async function delReview(id){await request.delete('/review/admin/'+id);fetchReviews()}
 
-// Init
-onMounted(()=>{loadDashboard();fetchUsers();fetchProducts();fetchOrders();fetchCats();fetchBanners();fetchCoupons();fetchAnns();fetchFeedbacks();fetchReviews()})
-watch(tab, t=>{if(t==='dashboard')nextTick(()=>loadDashboard())})
+// Init — 仅首屏加载看板
+onMounted(()=>{loadDashboard()})
+
+// 切换 Tab 时按需加载数据（减少首屏请求）
+const loadedTabs = reactive({})
+watch(tab, t => {
+  if (loadedTabs[t]) return; loadedTabs[t] = true
+  nextTick(() => {
+    if (t==='dashboard') loadDashboard()
+    if (t==='users') fetchUsers()
+    if (t==='products') fetchProducts()
+    if (t==='orders') fetchOrders()
+    if (t==='categories') fetchCats()
+    if (t==='banners') fetchBanners()
+    if (t==='coupons') fetchCoupons()
+    if (t==='announcements') fetchAnns()
+    if (t==='feedbacks') fetchFeedbacks()
+    if (t==='reviews') fetchReviews()
+  })
+})
 </script>
 
 <style scoped>

@@ -25,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -143,6 +144,7 @@ public class ProductServiceImpl implements ProductService {
         product.setTitle(vo.getTitle());
         product.setDescription(vo.getDescription());
         product.setImages(vo.getImages() != null ? JSONUtil.toJsonStr(vo.getImages()) : "[]");
+        product.setSpecs(vo.getSpecs() != null ? JSONUtil.toJsonStr(vo.getSpecs()) : null);
         product.setOriginalPrice(vo.getOriginalPrice() != null ? vo.getOriginalPrice() : BigDecimal.ZERO);
         product.setPrice(vo.getPrice());
         product.setCondition(vo.getCondition() != null ? vo.getCondition() : 0);
@@ -166,6 +168,7 @@ public class ProductServiceImpl implements ProductService {
         if (StrUtil.isNotBlank(vo.getTitle())) product.setTitle(vo.getTitle());
         if (StrUtil.isNotBlank(vo.getDescription())) product.setDescription(vo.getDescription());
         if (vo.getImages() != null) product.setImages(JSONUtil.toJsonStr(vo.getImages()));
+        if (vo.getSpecs() != null) product.setSpecs(JSONUtil.toJsonStr(vo.getSpecs()));
         if (vo.getPrice() != null) product.setPrice(vo.getPrice());
         if (vo.getOriginalPrice() != null) product.setOriginalPrice(vo.getOriginalPrice());
         if (vo.getCondition() != null) product.setCondition(vo.getCondition());
@@ -189,6 +192,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     // ==================== 私有辅助方法 ====================
+
+    private Map<String, String> parseSpecs(String specsJson) {
+        if (StrUtil.isBlank(specsJson)) return Map.of();
+        try { return JSONUtil.toBean(specsJson, Map.class); } catch (Exception e) { return Map.of(); }
+    }
 
     private ProductVO toVO(Product product) {
         // 查询分类名称
@@ -252,6 +260,7 @@ public class ProductServiceImpl implements ProductService {
                 .viewCount(product.getViewCount())
                 .favoriteCount(product.getFavoriteCount())
                 .tags(tagList)
+                .specs(parseSpecs(product.getSpecs()))
                 .createdAt(product.getCreatedAt())
                 .build();
     }
