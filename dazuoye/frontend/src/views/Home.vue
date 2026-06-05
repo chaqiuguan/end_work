@@ -22,11 +22,6 @@
       </el-carousel>
     </section>
 
-    <!-- 系统公告 -->
-    <section class="page-container" v-if="announcements.length > 0">
-      <el-alert v-for="a in announcements" :key="a.id" :title="a.title" type="info" :description="a.content" show-icon :closable="false" style="margin-bottom:8px" />
-    </section>
-
     <!-- 分类快捷入口 -->
     <section class="page-container">
       <h2 class="section-title">热门分类</h2>
@@ -50,6 +45,11 @@
       <div v-else class="product-grid">
         <ProductCard v-for="item in products" :key="item.id" :product="item" />
       </div>
+    </section>
+
+    <!-- 系统公告 -->
+    <section class="page-container" v-if="announcements.length > 0">
+      <el-alert v-for="a in announcements" :key="a.id" :title="a.title" type="info" :description="a.content" show-icon :closable="false" style="margin-bottom:8px" />
     </section>
   </div>
 </template>

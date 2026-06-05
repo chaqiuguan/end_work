@@ -50,7 +50,7 @@ services:
       - "8080:8080"
     environment:
       SPRING_PROFILES_ACTIVE: docker
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/zhuanbaomao?useUnicode=true&characterEncoding=utf8mb4&serverTimezone=Asia/Shanghai
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/zhuanbaomao?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
       SPRING_DATASOURCE_USERNAME: zbm_user
       SPRING_DATASOURCE_PASSWORD: zbm_pass_2024
       SPRING_REDIS_HOST: redis
@@ -69,7 +69,7 @@ services:
     container_name: zhuanbaomao-frontend
     restart: always
     ports:
-      - "80:80"
+      - "3000:80"
     depends_on:
       - backend
 

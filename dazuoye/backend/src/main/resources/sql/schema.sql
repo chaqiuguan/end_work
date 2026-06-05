@@ -9,6 +9,10 @@ CREATE DATABASE IF NOT EXISTS zhuanbaomao
 
 USE zhuanbaomao;
 
+-- 授权 Docker 用户
+GRANT ALL PRIVILEGES ON zhuanbaomao.* TO 'zbm_user'@'%' IDENTIFIED BY 'zbm_pass_2024';
+FLUSH PRIVILEGES;
+
 -- ============================================
 -- 1. 用户表 (user)
 -- ============================================
