@@ -5,6 +5,8 @@ import com.zhuanbaomao.common.Result;
 import com.zhuanbaomao.entity.Announcement;
 import com.zhuanbaomao.mapper.AnnouncementMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +17,8 @@ public class AnnouncementController {
 
     private final AnnouncementMapper announcementMapper;
 
-    /** 公开：公告列表 */
+    /** 公开：公告列表（缓存30分钟） */
+    @Cacheable(value = "announcements", key = "'public'")
     @GetMapping("/announcement/list")
     public Result<List<Announcement>> list() {
         return Result.success(announcementMapper.selectList(
@@ -29,10 +32,13 @@ public class AnnouncementController {
                 new LambdaQueryWrapper<Announcement>().orderByDesc(Announcement::getCreatedAt)));
     }
 
+    @CacheEvict(value = "announcements", allEntries = true)
     @PostMapping("/admin/announcement/add")
     public Result<?> add(@RequestBody Announcement a) { announcementMapper.insert(a); return Result.success("发布成功"); }
+    @CacheEvict(value = "announcements", allEntries = true)
     @PutMapping("/admin/announcement/{id}")
     public Result<?> update(@PathVariable Long id, @RequestBody Announcement a) { a.setId(id); announcementMapper.updateById(a); return Result.success("更新成功"); }
+    @CacheEvict(value = "announcements", allEntries = true)
     @DeleteMapping("/admin/announcement/{id}")
     public Result<?> delete(@PathVariable Long id) { announcementMapper.deleteById(id); return Result.success("已删除"); }
 }

@@ -55,6 +55,14 @@ public class ProductController {
     }
 
     /**
+     * 相似商品推荐（公开接口）：同品类6件
+     */
+    @GetMapping("/similar/{id}")
+    public Result<?> similar(@PathVariable Long id) {
+        return productService.similar(id);
+    }
+
+    /**
      * 下架商品
      */
     @PutMapping("/{id}/off-shelf")

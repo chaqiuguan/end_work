@@ -1,0 +1,24 @@
+# 第一阶段：Maven 构建
+FROM maven:3.8-openjdk-11 AS builder
+WORKDIR /build
+
+# 复制 common 模块
+COPY common/pom.xml common/pom.xml
+COPY common/src common/src
+
+# 先安装 common 到本地仓库
+RUN cd common && mvn install -DskipTests -q
+
+# 复制当前服务
+COPY order-service/pom.xml order-service/pom.xml
+COPY order-service/src order-service/src
+
+# 构建当前服务
+RUN cd order-service && mvn package -DskipTests -q
+
+# 第二阶段：运行
+FROM openjdk:11-jre-slim
+WORKDIR /app
+COPY --from=builder /build/order-service/target/order-service-2.0.0.jar app.jar
+EXPOSE 8083
+ENTRYPOINT ["java","-jar","app.jar"]

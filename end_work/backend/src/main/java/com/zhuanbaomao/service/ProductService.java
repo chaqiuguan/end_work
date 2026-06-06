@@ -33,4 +33,9 @@ public interface ProductService {
      * 下架商品
      */
     Result<?> offShelf(Long sellerId, Long productId);
+
+    /**
+     * 相似商品推荐（同品类 + 模糊匹配）
+     */
+    Result<?> similar(Long productId);
 }

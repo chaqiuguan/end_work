@@ -20,6 +20,11 @@ export function updateProductAPI(id, data) {
   return request.put(`/product/${id}`, data)
 }
 
+/** 相似商品推荐 */
+export function getSimilarProductsAPI(id) {
+  return request.get(`/product/similar/${id}`)
+}
+
 /** 获取分类列表 */
 export function getCategoryListAPI() {
   return request.get('/category/list')

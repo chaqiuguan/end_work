@@ -98,13 +98,37 @@
       "Bash(cp \"D:/NEUwork/web/p/shanping/Peak Design 碳纤维旅行三脚架.png\" \"d:/NEUwork/web/end_work/frontend/public/products/94.png\")",
       "Bash(cp \"D:/NEUwork/web/p/shanping/Ruggable Kamran 可机洗地毯 波西米亚风 8x10英尺.png\" \"d:/NEUwork/web/end_work/frontend/public/products/81.png\")",
       "Bash(cp \"D:/NEUwork/web/p/Concept2 Model D PM5 划船机.jpg\" \"d:/NEUwork/web/end_work/frontend/public/products/88.jpg\")",
-      "Bash(cp \"D:/NEUwork/web/p/iPhone 15 128GB 黑色.jpg\" \"d:/NEUwork/web/end_work/frontend/public/products/1.jpg\")"
+      "Bash(cp \"D:/NEUwork/web/p/iPhone 15 128GB 黑色.jpg\" \"d:/NEUwork/web/end_work/frontend/public/products/1.jpg\")",
+      "Bash(python3 crawl_images.py)",
+      "Bash(curl -s -o /dev/null -w \"API: %{http_code}\" http://localhost:8080/api/product/list?size=1)",
+      "Bash(curl -s -o /dev/null -w \"API: %{http_code}\" http://localhost:8080/api/category/list)",
+      "Bash(curl -s -o /dev/null -w \"http://localhost:8080/ → HTTP %{http_code}\\\\n\" http://localhost:8080/)",
+      "Bash(curl -s -o /dev/null -w \"http://localhost:8080/api/ → HTTP %{http_code}\\\\n\" http://localhost:8080/api/)",
+      "mcp__playwright__browser_run_code_unsafe",
+      "Bash(mvn package *)",
+      "Bash(curl -s -o /dev/null -w \"相似商品API: %{http_code}\" http://localhost:8080/api/product/similar/1)",
+      "Bash(curl -s -o /dev/null -w \"模糊搜索: %{http_code}\" \"http://localhost:8080/api/product/list?keyword=MacBook\")",
+      "Bash(curl -s -o /dev/null -w \"前端: %{http_code}\" http://localhost:3000/product/1)",
+      "Bash(curl -s http://localhost:8080/api/product/similar/1)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(f'{p[\\\\\"id\\\\\"]}: {p[\\\\\"title\\\\\"]}'\\) for p in d['data']]\")",
+      "Bash(curl -s \"http://localhost:8080/api/product/list?keyword=macbook&size=3\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); r=d['data']; print\\(f'找到 {r[\\\\\"total\\\\\"]} 件'\\); [print\\(f'{p[\\\\\"id\\\\\"]}: {p[\\\\\"title\\\\\"]}'\\) for p in r['records']]\")",
+      "Bash(curl -s \"http://localhost:8080/api/product/list?keyword=%E7%9B%B8%E6%9C%BA&size=5\")",
+      "Bash(python3 split_ms.py)",
+      "Bash(mvn install *)",
+      "Bash(python3 fix_pkg.py)",
+      "Bash(cd d:/NEUwork/web/end_work/microservices && echo \"=== 本地仓库 common ===\" && ls ~/.m2/repository/com/zhuanbaomao/common/2.0.0/ 2>&1 && echo \"=== 重装common ===\" && mvn install -pl common -DskipTests 2>&1 | tail -3)",
+      "Read(//c/Users/enial/.m2/repository/com/zhuanbaomao/common/**)",
+      "Bash(grep -v \"^$\")",
+      "Bash(docker build *)",
+      "Bash(python3 add_cache.py)"
     ],
     "additionalDirectories": [
       "d:\\NEUwork\\web\\end_work\\backend",
       "d:\\NEUwork\\web\\end_work",
       "d:\\NEUwork\\web\\end_work\\.claude",
-      "d:\\MCP\\mcp"
+      "d:\\MCP\\mcp",
+      "d:\\NEUwork\\web\\p"
     ]
   }
 }

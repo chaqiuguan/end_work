@@ -84,6 +84,29 @@
         <p>{{ product.description || '卖家未提供描述信息' }}</p>
       </div>
 
+      <!-- 相似商品推荐 -->
+      <div v-if="similarProducts.length > 0" class="detail-similar">
+        <h3>猜你喜欢</h3>
+        <div class="similar-grid">
+          <div
+            v-for="s in similarProducts"
+            :key="s.id"
+            class="similar-card"
+            @click="$router.push(`/product/${s.id}`)"
+          >
+            <img
+              :src="(s.images && s.images[0]) || '/placeholder.png'"
+              :alt="s.title"
+              @error="$event.target.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23f5f5f5%22 width=%22200%22 height=%22200%22/><text x=%22100%22 y=%22110%22 text-anchor=%22middle%22 fill=%22%23ccc%22 font-size=%2248%22>🐟</text></svg>'"
+            />
+            <div class="similar-info">
+              <span class="similar-title">{{ s.title }}</span>
+              <span class="similar-price">¥{{ s.price }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- 商品评价 -->
       <div class="detail-reviews">
         <h3>商品评价 ({{ reviews.length }})</h3>
@@ -108,7 +131,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { getProductDetailAPI } from '@/api/product'
+import { getProductDetailAPI, getSimilarProductsAPI } from '@/api/product'
 import { useCartStore } from '@/store/cart'
 import { useUserStore } from '@/store/user'
 import { ElMessage } from 'element-plus'
@@ -125,20 +148,23 @@ const quantity = ref(1)
 const addingCart = ref(false)
 const isFavorited = ref(false)
 const reviews = ref([])
+const similarProducts = ref([])
 const reviewContent = ref('')
 const reviewRating = ref(5)
 
 onMounted(async () => {
   const id = route.params.id
   try {
-    const [prodRes, favRes, revRes] = await Promise.all([
+    const [prodRes, favRes, revRes, simRes] = await Promise.all([
       getProductDetailAPI(id),
       userStore.isLoggedIn ? request.get(`/favorite/check/${id}`).catch(() => ({data:{data:false}})) : {data:{data:false}},
-      request.get(`/review/list/${id}`).catch(() => ({data:{data:{records:[]}}}))
+      request.get(`/review/list/${id}`).catch(() => ({data:{data:{records:[]}}})),
+      getSimilarProductsAPI(id).catch(() => ({data:{data:[]}}))
     ])
     product.value = prodRes.data.data
     isFavorited.value = favRes.data.data
     reviews.value = revRes.data.data.records || []
+    similarProducts.value = simRes.data.data || []
     if (product.value?.images?.length) {
       currentImage.value = product.value.images[0]
     } else {
@@ -290,6 +316,60 @@ async function submitReview() {
 }
 .detail-description h3 { margin-bottom: 12px; }
 .detail-description p { line-height: 1.8; white-space: pre-wrap; }
+
+/* ===== 相似商品 ===== */
+.detail-similar {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-top: 16px;
+}
+.detail-similar h3 { margin-bottom: 16px; }
+
+.similar-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+
+.similar-card {
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  background: var(--bg-gray);
+}
+.similar-card:hover { transform: translateY(-2px); }
+
+.similar-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.similar-info {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.similar-title {
+  font-size: 12px;
+  color: var(--text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.similar-price {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+@media (max-width: 768px) { .similar-grid { grid-template-columns: repeat(3, 1fr); } }
 
 .detail-reviews {
   background: #fff;

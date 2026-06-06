@@ -1,0 +1,115 @@
+version: '3.8'
+
+services:
+  # ============ 基础设施 ============
+  mysql:
+    image: mysql:8.0
+    container_name: zbm-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123456
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-ms-data:/var/lib/mysql
+      - ./backend/src/main/resources/sql:/docker-entrypoint-initdb.d
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot123456"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: zbm-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass redis_pass_2024 --appendonly yes
+    volumes:
+      - redis-ms-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "redis_pass_2024", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ============ API 网关 ============
+  gateway:
+    build:
+      context: ./microservices/gateway
+      dockerfile: Dockerfile
+    container_name: zbm-gateway
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - user-service
+      - product-service
+      - order-service
+
+  # ============ 微服务 ============
+  user-service:
+    build:
+      context: ./microservices/user-service
+      dockerfile: Dockerfile
+    container_name: zbm-user-service
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/zhuanbaomao?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root123456
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  product-service:
+    build:
+      context: ./microservices/product-service
+      dockerfile: Dockerfile
+    container_name: zbm-product-service
+    restart: always
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/zhuanbaomao?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root123456
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  order-service:
+    build:
+      context: ./microservices/order-service
+      dockerfile: Dockerfile
+    container_name: zbm-order-service
+    restart: always
+    ports:
+      - "8083:8083"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/zhuanbaomao?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root123456
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  # ============ 前端 ============
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: zbm-frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - gateway
+
+volumes:
+  mysql-ms-data:
+  redis-ms-data:

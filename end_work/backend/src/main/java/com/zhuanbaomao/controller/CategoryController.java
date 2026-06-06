@@ -5,6 +5,7 @@ import com.zhuanbaomao.common.Result;
 import com.zhuanbaomao.entity.Category;
 import com.zhuanbaomao.mapper.CategoryMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,7 @@ public class CategoryController {
     /**
      * 获取所有分类
      */
+    @Cacheable(value = "categories", key = "'all'")
     @GetMapping("/list")
     public Result<List<Category>> list() {
         List<Category> categories = categoryMapper.selectList(

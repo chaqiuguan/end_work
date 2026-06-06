@@ -19,6 +19,7 @@ import com.zhuanbaomao.service.ProductService;
 import com.zhuanbaomao.vo.ProductVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,6 +41,7 @@ public class ProductServiceImpl implements ProductService {
     private final CategoryMapper categoryMapper;
     private final UserMapper userMapper;
 
+    @Cacheable(value = "productList", key = "#query.page + ':' + #query.size + ':' + #query.keyword + ':' + #query.categoryId + ':' + #query.sortBy", unless = "#result == null")
     @Override
     public Result<?> list(ProductQueryDTO query) {
         LambdaQueryWrapper<Product> wrapper = new LambdaQueryWrapper<>();
@@ -47,12 +49,14 @@ public class ProductServiceImpl implements ProductService {
         // 只查询已上架的商品
         wrapper.eq(Product::getStatus, 1);
 
-        // 关键字搜索
+        // 关键字模糊搜索（标题、描述、标签）
         if (StrUtil.isNotBlank(query.getKeyword())) {
             wrapper.and(w -> w
                     .like(Product::getTitle, query.getKeyword())
                     .or()
-                    .like(Product::getDescription, query.getKeyword()));
+                    .like(Product::getDescription, query.getKeyword())
+                    .or()
+                    .like(Product::getTags, query.getKeyword()));
         }
 
         // 分类筛选
@@ -111,6 +115,7 @@ public class ProductServiceImpl implements ProductService {
         return Result.success(result);
     }
 
+    @Cacheable(value = "productDetail", key = "#productId", unless = "#result == null")
     @Override
     public Result<ProductVO> detail(Long productId) {
         Product product = productMapper.selectById(productId);
@@ -177,6 +182,39 @@ public class ProductServiceImpl implements ProductService {
 
         productMapper.updateById(product);
         return Result.success("商品更新成功");
+    }
+
+    @Override
+    public Result<?> similar(Long productId) {
+        Product product = productMapper.selectById(productId);
+        if (product == null || product.getDeleted() == 1) {
+            return Result.success(List.of());
+        }
+
+        LambdaQueryWrapper<Product> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(Product::getStatus, 1)
+               .eq(Product::getCategoryId, product.getCategoryId())
+               .ne(Product::getId, productId)
+               .orderByDesc(Product::getViewCount)
+               .last("LIMIT 6");
+
+        List<Product> list = productMapper.selectList(wrapper);
+        List<ProductVO> vos = list.stream().map(this::toVO).collect(Collectors.toList());
+
+        // 如果同品类不够6件，用热销商品补齐
+        if (vos.size() < 6) {
+            LambdaQueryWrapper<Product> fallback = new LambdaQueryWrapper<>();
+            fallback.eq(Product::getStatus, 1)
+                    .ne(Product::getId, productId)
+                    .notIn(Product::getCategoryId, product.getCategoryId())
+                    .orderByDesc(Product::getViewCount)
+                    .last("LIMIT " + (6 - vos.size()));
+            List<ProductVO> fallbackVos = productMapper.selectList(fallback).stream()
+                    .map(this::toVO).collect(Collectors.toList());
+            vos.addAll(fallbackVos);
+        }
+
+        return Result.success(vos);
     }
 
     @Override

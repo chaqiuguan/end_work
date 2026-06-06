@@ -20,6 +20,9 @@
           <template #prefix>
             <el-icon><Search /></el-icon>
           </template>
+          <template #append>
+            <el-button :icon="Search" @click="search" />
+          </template>
         </el-input>
       </div>
 
@@ -120,6 +123,7 @@ import { useRouter, useRoute } from 'vue-router'
 import { useUserStore } from '@/store/user'
 import { useCartStore } from '@/store/cart'
 import { ElMessageBox } from 'element-plus'
+import { Search } from '@element-plus/icons-vue'
 import { getCategoryListAPI } from '@/api/product'
 
 const router = useRouter()
@@ -132,8 +136,11 @@ const categories = ref([])
 const activeCat = ref(0)
 
 function search() {
-  if (keyword.value.trim()) {
-    router.push({ path: '/product/list', query: { keyword: keyword.value.trim() } })
+  const kw = keyword.value.trim()
+  if (kw) {
+    router.push({ path: '/product/list', query: { keyword: kw } })
+  } else {
+    router.push({ path: '/product/list' })
   }
 }
 

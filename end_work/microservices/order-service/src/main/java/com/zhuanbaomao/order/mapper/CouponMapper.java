@@ -1,0 +1,8 @@
+package com.zhuanbaomao.order.mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.zhuanbaomao.entity.Coupon;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface CouponMapper extends BaseMapper<Coupon> {}
