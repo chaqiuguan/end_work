@@ -1,0 +1,277 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "🐟 转鱼宝猫" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e7]: 🐟
+        - generic [ref=e8]: 转鱼宝猫
+      - generic [ref=e11]:
+        - img [ref=e14]
+        - textbox "搜索商品..." [ref=e16]
+      - generic [ref=e18]:
+        - link "全部商品" [ref=e19] [cursor=pointer]:
+          - /url: /product/list
+          - img [ref=e21]
+          - generic [ref=e23]: 全部商品
+        - link "购物车" [ref=e24] [cursor=pointer]:
+          - /url: /cart
+          - img [ref=e27]
+          - generic [ref=e29]: 购物车
+        - link "登录" [ref=e30] [cursor=pointer]:
+          - /url: /login
+          - button "登录" [ref=e31]:
+            - generic [ref=e32]: 登录
+  - navigation [ref=e33]:
+    - generic [ref=e34]:
+      - generic [ref=e35]: 📂 品类市场
+      - generic [ref=e36]:
+        - link "🔥 全部 All" [ref=e37] [cursor=pointer]:
+          - /url: /product/list
+          - generic [ref=e38]: 🔥
+          - generic [ref=e39]:
+            - generic [ref=e40]: 全部
+            - generic [ref=e41]: All
+        - link "💻 数码电子 Digital" [ref=e42] [cursor=pointer]:
+          - /url: /product/list?categoryId=1
+          - generic [ref=e43]: 💻
+          - generic [ref=e44]:
+            - generic [ref=e45]: 数码电子
+            - generic [ref=e46]: Digital
+        - link "👗 服饰鞋包 Fashion" [ref=e47] [cursor=pointer]:
+          - /url: /product/list?categoryId=2
+          - generic [ref=e48]: 👗
+          - generic [ref=e49]:
+            - generic [ref=e50]: 服饰鞋包
+            - generic [ref=e51]: Fashion
+        - link "📚 图书教材 Books" [ref=e52] [cursor=pointer]:
+          - /url: /product/list?categoryId=3
+          - generic [ref=e53]: 📚
+          - generic [ref=e54]:
+            - generic [ref=e55]: 图书教材
+            - generic [ref=e56]: Books
+        - link "🏠 家居生活 Home" [ref=e57] [cursor=pointer]:
+          - /url: /product/list?categoryId=4
+          - generic [ref=e58]: 🏠
+          - generic [ref=e59]:
+            - generic [ref=e60]: 家居生活
+            - generic [ref=e61]: Home
+        - link "⚽ 运动户外 Sports" [ref=e62] [cursor=pointer]:
+          - /url: /product/list?categoryId=5
+          - generic [ref=e63]: ⚽
+          - generic [ref=e64]:
+            - generic [ref=e65]: 运动户外
+            - generic [ref=e66]: Sports
+        - link "💄 美妆个护 Beauty" [ref=e67] [cursor=pointer]:
+          - /url: /product/list?categoryId=6
+          - generic [ref=e68]: 💄
+          - generic [ref=e69]:
+            - generic [ref=e70]: 美妆个护
+            - generic [ref=e71]: Beauty
+        - link "🍼 母婴玩具 Baby" [ref=e72] [cursor=pointer]:
+          - /url: /product/list?categoryId=7
+          - generic [ref=e73]: 🍼
+          - generic [ref=e74]:
+            - generic [ref=e75]: 母婴玩具
+            - generic [ref=e76]: Baby
+        - link "📦 其他 More" [ref=e77] [cursor=pointer]:
+          - /url: /product/list?categoryId=8
+          - generic [ref=e78]: 📦
+          - generic [ref=e79]:
+            - generic [ref=e80]: 其他
+            - generic [ref=e81]: More
+  - main [ref=e82]:
+    - generic [ref=e83]:
+      - generic [ref=e174]:
+        - generic [ref=e175]:
+          - link "Summer Sale" [ref=e178] [cursor=pointer]:
+            - /url: /product/list
+            - img "Summer Sale" [ref=e179]
+          - link "数码焕新季" [ref=e181] [cursor=pointer]:
+            - /url: /product/list?categoryId=9
+            - img "数码焕新季" [ref=e182]
+          - link "潮流穿搭专场" [ref=e185] [cursor=pointer]:
+            - /url: /product/list?categoryId=10
+            - img "潮流穿搭专场" [ref=e186]
+          - link "好书低价抢" [ref=e189] [cursor=pointer]:
+            - /url: /product/list?categoryId=11
+            - img "好书低价抢" [ref=e190]
+          - link "家居好物推荐" [ref=e193] [cursor=pointer]:
+            - /url: /product/list?categoryId=12
+            - img "家居好物推荐" [ref=e194]
+          - link "运动出行装备" [ref=e197] [cursor=pointer]:
+            - /url: /product/list?categoryId=13
+            - img "运动出行装备" [ref=e198]
+          - link "美妆护肤特惠" [ref=e201] [cursor=pointer]:
+            - /url: /product/list?categoryId=14
+            - img "美妆护肤特惠" [ref=e202]
+        - list [ref=e203]:
+          - listitem [ref=e204] [cursor=pointer]:
+            - button "el.carousel.indicator" [ref=e205]
+          - listitem [ref=e206] [cursor=pointer]:
+            - button "el.carousel.indicator" [ref=e207]
+          - listitem [ref=e208] [cursor=pointer]:
+            - button "el.carousel.indicator" [ref=e209]
+          - listitem [ref=e210] [cursor=pointer]:
+            - button "el.carousel.indicator" [ref=e211]
+          - listitem [ref=e212] [cursor=pointer]:
+            - button "el.carousel.indicator" [ref=e213]
+          - listitem [ref=e214] [cursor=pointer]:
+            - button "el.carousel.indicator" [ref=e215]
+          - listitem [ref=e216] [cursor=pointer]:
+            - button "el.carousel.indicator" [ref=e217]
+      - generic [ref=e85]:
+        - generic [ref=e87] [cursor=pointer]:
+          - generic:
+            - combobox [ref=e89]
+            - generic [ref=e90]: 全部分类
+          - img [ref=e93]
+        - generic [ref=e96]:
+          - img [ref=e99]
+          - textbox "搜索你想要的闲置好物..." [ref=e101]
+        - button "搜索" [ref=e102] [cursor=pointer]:
+          - generic [ref=e103]: 搜索
+      - generic [ref=e105]:
+        - complementary [ref=e106]:
+          - heading "品类市场" [level=3] [ref=e107]
+          - list [ref=e108]:
+            - listitem [ref=e218] [cursor=pointer]:
+              - link "数码电子" [ref=e219]:
+                - /url: /product/list?categoryId=1
+            - listitem [ref=e220] [cursor=pointer]:
+              - link "服饰鞋包" [ref=e221]:
+                - /url: /product/list?categoryId=2
+            - listitem [ref=e222] [cursor=pointer]:
+              - link "图书教材" [ref=e223]:
+                - /url: /product/list?categoryId=3
+            - listitem [ref=e224] [cursor=pointer]:
+              - link "家居生活" [ref=e225]:
+                - /url: /product/list?categoryId=4
+            - listitem [ref=e226] [cursor=pointer]:
+              - link "运动户外" [ref=e227]:
+                - /url: /product/list?categoryId=5
+            - listitem [ref=e228] [cursor=pointer]:
+              - link "美妆个护" [ref=e229]:
+                - /url: /product/list?categoryId=6
+            - listitem [ref=e230] [cursor=pointer]:
+              - link "母婴玩具" [ref=e231]:
+                - /url: /product/list?categoryId=7
+            - listitem [ref=e232] [cursor=pointer]:
+              - link "其他" [ref=e233]:
+                - /url: /product/list?categoryId=8
+        - generic [ref=e109]:
+          - heading "热卖榜单" [level=2] [ref=e110]
+          - generic [ref=e111]:
+            - generic [ref=e112] [cursor=pointer]:
+              - generic [ref=e113]:
+                - generic [ref=e115]: 热卖排行
+                - generic [ref=e116]: ›
+              - generic [ref=e117]:
+                - img "热卖排行0" [ref=e234]
+                - img "热卖排行1" [ref=e235]
+                - img "热卖排行2" [ref=e236]
+            - generic [ref=e118] [cursor=pointer]:
+              - generic [ref=e119]:
+                - generic [ref=e121]: 新品首发
+                - generic [ref=e122]: ›
+              - generic [ref=e123]:
+                - img "新品首发0" [ref=e237]
+                - img "新品首发1" [ref=e238]
+                - img "新品首发2" [ref=e239]
+            - generic [ref=e124] [cursor=pointer]:
+              - generic [ref=e125]:
+                - generic [ref=e127]: 好物精选
+                - generic [ref=e128]: ›
+              - generic [ref=e129]:
+                - img "好物精选0" [ref=e240]
+                - img "好物精选1" [ref=e241]
+                - img "好物精选2" [ref=e242]
+            - generic [ref=e130] [cursor=pointer]:
+              - generic [ref=e131]:
+                - generic [ref=e133]: 折扣专区
+                - generic [ref=e134]: ›
+              - generic [ref=e135]:
+                - img "折扣专区0" [ref=e243]
+                - img "折扣专区1" [ref=e244]
+                - img "折扣专区2" [ref=e245]
+      - generic [ref=e136]:
+        - heading "热门好物" [level=2] [ref=e137]
+        - generic [ref=e246]:
+          - link "iPhone 15 128GB Black 几乎全新 iPhone 15 128GB Black ¥4999 ¥5999 17 浏览" [ref=e247] [cursor=pointer]:
+            - /url: /product/1
+            - generic [ref=e248]:
+              - img "iPhone 15 128GB Black" [ref=e249]
+              - generic [ref=e250]: 几乎全新
+            - generic [ref=e251]:
+              - heading "iPhone 15 128GB Black" [level=3] [ref=e252]
+              - generic [ref=e253]: ¥4999 ¥5999
+              - generic [ref=e255]: 17 浏览
+          - link "Fisher-Price Kick Play Piano Gym Mat 轻微使用 Fisher-Price Kick Play Piano Gym Mat ¥79 ¥249 1 浏览" [ref=e256] [cursor=pointer]:
+            - /url: /product/130
+            - generic [ref=e257]:
+              - img "Fisher-Price Kick Play Piano Gym Mat" [ref=e258]
+              - generic [ref=e259]: 轻微使用
+            - generic [ref=e260]:
+              - heading "Fisher-Price Kick Play Piano Gym Mat" [level=3] [ref=e261]
+              - generic [ref=e262]: ¥79 ¥249
+              - generic [ref=e264]: 1 浏览
+          - link "Instant Pot Duo Plus 6 Quart 9-in-1 几乎全新 Instant Pot Duo Plus 6 Quart 9-in-1 ¥249 ¥599 0 浏览" [ref=e265] [cursor=pointer]:
+            - /url: /product/85
+            - generic [ref=e266]:
+              - img "Instant Pot Duo Plus 6 Quart 9-in-1" [ref=e267]
+              - generic [ref=e268]: 几乎全新
+            - generic [ref=e269]:
+              - heading "Instant Pot Duo Plus 6 Quart 9-in-1" [level=3] [ref=e270]
+              - generic [ref=e271]: ¥249 ¥599
+              - generic [ref=e273]: 0 浏览
+          - link "Concept2 Model D Rowing Machine PM5 几乎全新 Concept2 Model D Rowing Machine PM5 ¥3999 ¥7999 0 浏览" [ref=e274] [cursor=pointer]:
+            - /url: /product/88
+            - generic [ref=e275]:
+              - img "Concept2 Model D Rowing Machine PM5" [ref=e276]
+              - generic [ref=e277]: 几乎全新
+            - generic [ref=e278]:
+              - heading "Concept2 Model D Rowing Machine PM5" [level=3] [ref=e279]
+              - generic [ref=e280]: ¥3999 ¥7999
+              - generic [ref=e282]: 0 浏览
+          - link "Manduka PRO Yoga Mat 6mm Black 几乎全新 Manduka PRO Yoga Mat 6mm Black ¥299 ¥699 0 浏览" [ref=e283] [cursor=pointer]:
+            - /url: /product/87
+            - generic [ref=e284]:
+              - img "Manduka PRO Yoga Mat 6mm Black" [ref=e285]
+              - generic [ref=e286]: 几乎全新
+            - generic [ref=e287]:
+              - heading "Manduka PRO Yoga Mat 6mm Black" [level=3] [ref=e288]
+              - generic [ref=e289]: ¥299 ¥699
+              - generic [ref=e291]: 0 浏览
+          - link "Yamaha YDP-165 Digital Piano with Bench 几乎全新 Yamaha YDP-165 Digital Piano with Bench ¥2699 ¥5499 0 浏览" [ref=e292] [cursor=pointer]:
+            - /url: /product/86
+            - generic [ref=e293]:
+              - img "Yamaha YDP-165 Digital Piano with Bench" [ref=e294]
+              - generic [ref=e295]: 几乎全新
+            - generic [ref=e296]:
+              - heading "Yamaha YDP-165 Digital Piano with Bench" [level=3] [ref=e297]
+              - generic [ref=e298]: ¥2699 ¥5499
+              - generic [ref=e300]: 0 浏览
+          - link "Herman Miller Aeron Chair Size B 轻微使用 Herman Miller Aeron Chair Size B ¥3499 ¥7999 0 浏览" [ref=e301] [cursor=pointer]:
+            - /url: /product/83
+            - generic [ref=e302]:
+              - img "Herman Miller Aeron Chair Size B" [ref=e303]
+              - generic [ref=e304]: 轻微使用
+            - generic [ref=e305]:
+              - heading "Herman Miller Aeron Chair Size B" [level=3] [ref=e306]
+              - generic [ref=e307]: ¥3499 ¥7999
+              - generic [ref=e309]: 0 浏览
+          - link "Zwilling Pro 7-Piece Knife Block Set 几乎全新 Zwilling Pro 7-Piece Knife Block Set ¥899 ¥1999 0 浏览" [ref=e310] [cursor=pointer]:
+            - /url: /product/82
+            - generic [ref=e311]:
+              - img "Zwilling Pro 7-Piece Knife Block Set" [ref=e312]
+              - generic [ref=e313]: 几乎全新
+            - generic [ref=e314]:
+              - heading "Zwilling Pro 7-Piece Knife Block Set" [level=3] [ref=e315]
+              - generic [ref=e316]: ¥899 ¥1999
+              - generic [ref=e318]: 0 浏览
+      - alert [ref=e320]:
+        - img [ref=e322]
+        - generic [ref=e324]:
+          - generic [ref=e325]: 🐟 转鱼宝猫
+          - paragraph [ref=e326]: 闲转好物，物尽其用 — 让每一件闲置找到新主人 | Welcome to ZhuanYuBaoMao — Welcome everyone!
+  - contentinfo [ref=e171]:
+    - paragraph [ref=e172]: © 2024 转鱼宝猫 — 闲转好物，物尽其用

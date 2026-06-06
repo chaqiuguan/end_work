@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "node",
+      "args": ["D:/MCP/mcp/node_modules/@playwright/mcp/cli.js"],
+      "cwd": "D:/MCP/mcp"
+    }
+  }
+}

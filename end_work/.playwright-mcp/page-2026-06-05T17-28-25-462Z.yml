@@ -1,0 +1,399 @@
+- generic [active] [ref=e1]:
+  - link "欢迎进入 阿里巴巴1688.com - 全球领先的采购批发平台,批发网,盲人用户进入智能盲道请按快捷键Ctrl+Alt+R；阅读详细操作说明请按快捷键Ctrl+Alt+问号键。":
+    - /url: javascript:void(0)
+  - generic [ref=e3]:
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - img [ref=e10]
+        - link "手机阿里" [ref=e15] [cursor=pointer]:
+          - /url: //3g.1688.com/?tracelog=wireless_alibar
+      - generic [ref=e16]:
+        - generic [ref=e18] [cursor=pointer]:
+          - list:
+            - listitem [ref=e19]:
+              - img [ref=e20]
+              - link "请登录" [ref=e21]:
+                - /url: //login.1688.com/member/signin.htm?Done=https%3A%2F%2Fwww.1688.com%2Fzw%2Fhamlet.html%3Fscene%3D2%26keywords%3D%25E9%2598%25BF%25E9%2587%258C%25E5%25B7%25B4%25E5%25B7%25B4%25E6%2589%25B9%25E5%258F%2591%25E7%25BD%2591%26cosite%3Dgdtsogoujj%26trackid%3D885218259884752247730301%26format%3Dnormal%26location%3Dlanding_t4%26q%3D%25E9%2598%25BF%25E9%2587%258C%25E5%25B7%25B4%25E5%25B7%25B42018%25E5%25B9%25B4%26m_kw%3D%25E9%2598%25BF%25E9%2587%258C%25E5%25B7%25B4%25E5%25B7%25B42018%25E5%25B9%25B4%26m_k%3D1086484828%26m_r%3Dxyxrovrn5todo%26m_c%3D8391167495%26m_ac%3D25548390%26m_a%3D8391166818%26m_p%3D8391128650%26m_clk%3D337se2qcaaallwr3na2q
+            - listitem [ref=e22]:
+              - link "免费注册" [ref=e23]:
+                - /url: //member.1688.com/member/join/enterprise_join.htm
+        - link "消息" [ref=e25] [cursor=pointer]:
+          - /url: https://systemjs.1688.com/krump/schema/2152.html
+        - link [ref=e27] [cursor=pointer]:
+          - /url: https://air.1688.com/app/ocms-fusion-components-1688/def_cbu_web_im/index.html
+          - img [ref=e28]
+      - generic [ref=e34]:
+        - link "1688首页" [ref=e36] [cursor=pointer]:
+          - /url: //www.1688.com/
+        - generic [ref=e38]:
+          - link "我的阿里" [ref=e39] [cursor=pointer]:
+            - /url: https://work.1688.com/
+          - img [ref=e40]
+        - link "采购车 0" [ref=e44] [cursor=pointer]:
+          - /url: //cart.1688.com/cart.htm
+          - generic [ref=e45]: 采购车
+          - emphasis [ref=e46]: "0"
+          - img [ref=e47]
+        - generic [ref=e50]:
+          - link "我的收藏" [ref=e51] [cursor=pointer]:
+            - /url: https://purchase.1688.com/favorites/favorite_shop.htm?tracelog=alibar_2_favorite_shop
+          - img [ref=e52]
+        - generic [ref=e55]:
+          - link "诚信通" [ref=e56] [cursor=pointer]:
+            - /url: https://cxt.1688.com/
+          - img [ref=e57]
+        - generic [ref=e60]:
+          - link "实力商家" [ref=e61] [cursor=pointer]:
+            - /url: https://shili.1688.com/page/60e53e91.html
+          - img [ref=e62]
+        - generic [ref=e65]:
+          - link "超级工厂" [ref=e66] [cursor=pointer]:
+            - /url: https://chaojigongchang.1688.com/superfactory/official/index.html
+          - img [ref=e67]
+        - generic [ref=e70]:
+          - link "我是供应商" [ref=e71] [cursor=pointer]:
+            - /url: https://gys.1688.com
+          - img [ref=e72]
+        - generic [ref=e75]:
+          - link "客服中心" [ref=e76] [cursor=pointer]:
+            - /url: https://support.1688.com/
+          - img [ref=e77]
+        - generic [ref=e80]:
+          - link "网站导航" [ref=e81] [cursor=pointer]:
+            - /url: //www.1688.com/alphabet_sitemap.html
+          - img [ref=e82]
+        - link "网站无障碍" [ref=e85] [cursor=pointer]:
+          - /url: javascript:aria.start();
+    - generic [ref=e86]:
+      - generic [ref=e89]:
+        - generic [ref=e90]:
+          - link "1688 热销市场" [ref=e92] [cursor=pointer]:
+            - /url: javascript:void(0)
+          - generic [ref=e93]:
+            - link "采购车" [ref=e94] [cursor=pointer]:
+              - /url: https://cart.1688.com/cart.htm
+              - img [ref=e95]
+              - generic [ref=e96]: 采购车
+            - link "消息" [ref=e97] [cursor=pointer]:
+              - /url: https://systemjs.1688.com/krump/schema/2152.html
+              - img [ref=e98]
+              - generic [ref=e99]: 消息
+            - link "下载插件" [ref=e100] [cursor=pointer]:
+              - /url: https://wxthirdplatform-p.1688.com/1688extension?source=1688.business.icon.default&target=landingPage
+              - img [ref=e101]
+              - generic [ref=e103]: 下载插件
+            - link "请登录" [ref=e105] [cursor=pointer]:
+              - /url: https://login.1688.com/member/signin.htm?done=https%3A%2F%2Fwww.1688.com%2Fzw%2Fhamlet.html%3Fscene%3D2%26keywords%3D%25E9%2598%25BF%25E9%2587%258C%25E5%25B7%25B4%25E5%25B7%25B4%25E6%2589%25B9%25E5%258F%2591%25E7%25BD%2591%26cosite%3Dgdtsogoujj%26trackid%3D885218259884752247730301%26format%3Dnormal%26location%3Dlanding_t4%26q%3D%25E9%2598%25BF%25E9%2587%258C%25E5%25B7%25B4%25E5%25B7%25B42018%25E5%25B9%25B4%26m_kw%3D%25E9%2598%25BF%25E9%2587%258C%25E5%25B7%25B4%25E5%25B7%25B42018%25E5%25B9%25B4%26m_k%3D1086484828%26m_r%3Dxyxrovrn5todo%26m_c%3D8391167495%26m_ac%3D25548390%26m_a%3D8391166818%26m_p%3D8391128650%26m_clk%3D337se2qcaaallwr3na2q
+              - img [ref=e106]
+              - generic [ref=e107]: 请登录
+        - generic [ref=e111]:
+          - generic [ref=e112]:
+            - textbox "请输入关键字、图片、链接" [ref=e113]
+            - generic [ref=e116]:
+              - button "Choose File"
+          - button "搜 索" [ref=e119] [cursor=pointer]
+      - generic [ref=e121]:
+        - generic [ref=e123]:
+          - img [ref=e124]
+          - generic [ref=e125]: 品类市场
+        - menubar [ref=e126]:
+          - menuitem " 服饰内衣 运动户外" [ref=e127] [cursor=pointer]:
+            - generic [ref=e128]:
+              - generic [ref=e130]:
+                - generic [ref=e131]: 
+                - link "服饰内衣" [ref=e133]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=服饰内衣&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+                - link "运动户外" [ref=e135]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=运动户外&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+              - text: 
+          - menuitem " 日用百货 食品饮料" [ref=e136] [cursor=pointer]:
+            - generic [ref=e137]:
+              - generic [ref=e139]:
+                - generic [ref=e140]: 
+                - link "日用百货" [ref=e142]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=日用百货&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+                - link "食品饮料" [ref=e144]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=食品饮料&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+              - text: 
+          - menuitem " 母婴 玩具" [ref=e145] [cursor=pointer]:
+            - generic [ref=e146]:
+              - generic [ref=e148]:
+                - generic [ref=e149]: 
+                - link "母婴" [ref=e151]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=母婴&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+                - link "玩具" [ref=e153]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=玩具&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+              - text: 
+          - menuitem " 鞋包 配饰" [ref=e154] [cursor=pointer]:
+            - generic [ref=e155]:
+              - generic [ref=e157]:
+                - generic [ref=e158]: 
+                - link "鞋包" [ref=e160]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=鞋包&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+                - link "配饰" [ref=e162]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=配饰&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+              - text: 
+          - menuitem " 美妆 日化" [ref=e163] [cursor=pointer]:
+            - generic [ref=e164]:
+              - generic [ref=e166]:
+                - generic [ref=e167]: 
+                - link "美妆" [ref=e169]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=美妆&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+                - link "日化" [ref=e171]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=日化&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+              - text: 
+          - menuitem " 数码家电 汽车用品" [ref=e172] [cursor=pointer]:
+            - generic [ref=e173]:
+              - generic [ref=e175]:
+                - generic [ref=e176]: 
+                - link "数码家电" [ref=e178]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=数码家电&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+                - link "汽车用品" [ref=e180]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=汽车用品&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+              - text: 
+          - menuitem " 机械 五金 仪表" [ref=e181] [cursor=pointer]:
+            - generic [ref=e182]:
+              - generic [ref=e184]:
+                - generic [ref=e185]: 
+                - link "机械" [ref=e187]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=机械&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+                - link "五金" [ref=e189]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=五金&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+                - link "仪表" [ref=e191]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=仪表&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+              - text: 
+          - menuitem " 包装 办公文教" [ref=e192] [cursor=pointer]:
+            - generic [ref=e193]:
+              - generic [ref=e195]:
+                - generic [ref=e196]: 
+                - link "包装" [ref=e198]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=包装&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+                - link "办公文教" [ref=e200]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=办公文教&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+              - text: 
+          - menuitem " 电工 安防" [ref=e201] [cursor=pointer]:
+            - generic [ref=e202]:
+              - generic [ref=e204]:
+                - generic [ref=e205]: 
+                - link "电工" [ref=e207]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=电工&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+                - link "安防" [ref=e209]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=安防&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+              - text: 
+          - menuitem " 照明 电子" [ref=e210] [cursor=pointer]:
+            - generic [ref=e211]:
+              - generic [ref=e213]:
+                - generic [ref=e214]: 
+                - link "照明" [ref=e216]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=照明&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+                - link "电子" [ref=e218]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=电子&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+              - text: 
+          - menuitem " 家装建材 家纺家饰" [ref=e219] [cursor=pointer]:
+            - generic [ref=e220]:
+              - generic [ref=e222]:
+                - generic [ref=e223]: 
+                - link "家装建材" [ref=e225]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=家装建材&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+                - link "家纺家饰" [ref=e227]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=家纺家饰&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+              - text: 
+          - menuitem " 橡塑 化工" [ref=e228] [cursor=pointer]:
+            - generic [ref=e229]:
+              - generic [ref=e231]:
+                - generic [ref=e232]: 
+                - link "橡塑" [ref=e234]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=橡塑&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+                - link "化工" [ref=e236]:
+                  - /url: https://www.1688.com/zw/page.html?hpageId=old-sem-pc-list&cosite=gdtsogoujj&keywords=化工&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&exp=pcDacuIconExp:A;sidebar:C;pcCpxGuessExp:B;pcCpxCpsExp:B;hotBangdanExp:B
+              - text: 
+      - generic [ref=e239]:
+        - link "低价热卖榜 白色纯棉小背心西装内搭打底无袖吊带女士春夏秋外穿辣妹大码上衣 2025新款手持小风扇学生礼物卡通可爱便携式桌面迷你USB充电风扇 蛋黄鲜肉粽子嘉兴风味冰皮端午节礼盒装批货送礼真空独立包装" [ref=e241] [cursor=pointer]:
+          - /url: https://www.1688.com/zw/page.html?hpageId=krump-2031&cosite=gdtsogoujj&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&ruleid=1&src=bangdan&hotBangdanExp=true
+          - generic [ref=e244]: 低价热卖榜
+          - generic [ref=e245]:
+            - img "白色纯棉小背心西装内搭打底无袖吊带女士春夏秋外穿辣妹大码上衣" [ref=e248]
+            - img "2025新款手持小风扇学生礼物卡通可爱便携式桌面迷你USB充电风扇" [ref=e251]
+            - img "蛋黄鲜肉粽子嘉兴风味冰皮端午节礼盒装批货送礼真空独立包装" [ref=e254]
+        - link "包邮特卖榜 纯棉针织打底西装内搭小背心女吊带春夏秋白色修身遮副乳辣妹上衣 金属冰箱贴定制创意烤漆磁贴订制公司logo文创纪念照片亚克力礼品 三层粽子礼盒装嘉兴粽子肉粽甜粽端午节送礼高端礼品企业团购批发" [ref=e256] [cursor=pointer]:
+          - /url: https://www.1688.com/zw/page.html?hpageId=krump-2031&cosite=gdtsogoujj&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&ruleid=2&src=bangdan&hotBangdanExp=true
+          - generic [ref=e259]: 包邮特卖榜
+          - generic [ref=e260]:
+            - img "纯棉针织打底西装内搭小背心女吊带春夏秋白色修身遮副乳辣妹上衣" [ref=e263]
+            - img "金属冰箱贴定制创意烤漆磁贴订制公司logo文创纪念照片亚克力礼品" [ref=e266]
+            - img "三层粽子礼盒装嘉兴粽子肉粽甜粽端午节送礼高端礼品企业团购批发" [ref=e269]
+        - link "好物严选榜 无痕透气发育期学生内衣女矫姿防驼背运动防震初中生少女文胸胸罩 大师肩颈部按摩仪加热敷N7仿真手指斜方肌按摩仪揉捏脖子疏通神器 狗厕所大型犬专用特大号狗粪便自动清理狗狗防踩屎便盆中型犬用品" [ref=e271] [cursor=pointer]:
+          - /url: https://www.1688.com/zw/page.html?hpageId=krump-2031&cosite=gdtsogoujj&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&ruleid=771223&src=bangdan&hotBangdanExp=true
+          - generic [ref=e274]: 好物严选榜
+          - generic [ref=e275]:
+            - img "无痕透气发育期学生内衣女矫姿防驼背运动防震初中生少女文胸胸罩" [ref=e278]
+            - img "大师肩颈部按摩仪加热敷N7仿真手指斜方肌按摩仪揉捏脖子疏通神器" [ref=e281]
+            - img "狗厕所大型犬专用特大号狗粪便自动清理狗狗防踩屎便盆中型犬用品" [ref=e284]
+        - link "工业品精选集 水晶标烫金光油金属标印贴转印贴印刷光油速干高光泽防水 现货小型行车行车 无轨龙门吊轮胎吊 1-5t 适用于平整地面 优惠价 策晟电动高压冲洗车市政园林小区物业工厂环卫新能源高压清洗车" [ref=e286] [cursor=pointer]:
+          - /url: https://www.1688.com/zw/page.html?hpageId=krump-2031&cosite=gdtsogoujj&trackid=885218259884752247730301&location=landing_t4&ptid=01770000000a9a48524b0c2173f7c2e5&ruleid=507103&src=bangdan&hotBangdanExp=true
+          - generic [ref=e289]: 工业品精选集
+          - generic [ref=e290]:
+            - img "水晶标烫金光油金属标印贴转印贴印刷光油速干高光泽防水" [ref=e293]
+            - img "现货小型行车行车 无轨龙门吊轮胎吊 1-5t 适用于平整地面 优惠价" [ref=e296]
+            - img "策晟电动高压冲洗车市政园林小区物业工厂环卫新能源高压清洗车" [ref=e299]
+      - generic [ref=e301]:
+        - generic [ref=e303]:
+          - img [ref=e304]
+          - generic [ref=e305]: 采购助手
+        - generic [ref=e307]:
+          - generic [ref=e308]: Hi~我是1688采购小助手，为您匹配优质货源，您可以点击一键获取专属服务
+          - generic [ref=e309]:
+            - generic [ref=e310]:
+              - generic [ref=e311]:
+                - generic [ref=e312]: "*"
+                - generic [ref=e313]: 采购商品
+              - textbox [ref=e315]
+            - generic [ref=e316]:
+              - generic [ref=e317]:
+                - generic [ref=e318]: "*"
+                - generic [ref=e319]: 联系电话
+              - textbox [ref=e321]
+            - generic [ref=e322]:
+              - generic [ref=e324]: 详细要求
+              - textbox "您可以自行输入需求，或直接点击下方符合需求的标签，小助手帮您完善采购需求。" [ref=e326]
+            - generic [ref=e327]:
+              - generic [ref=e329]: 采购周期
+              - generic [ref=e331] [cursor=pointer]:
+                - generic [ref=e332]:
+                  - emphasis [ref=e333]: 正常采购（14天）
+                  - combobox [ref=e335]
+                - generic [ref=e338]: 
+          - generic [ref=e340]:
+            - img [ref=e341]
+            - text: 未登录提交后无法查询
+            - link "去登录" [ref=e342] [cursor=pointer]:
+              - /url: //login.1688.com/member/signin.htm?Done=https%3A%2F%2Fwww.1688.com%2Fzw%2Fhamlet.html%3Fscene%3D2%26keywords%3D%25E9%2598%25BF%25E9%2587%258C%25E5%25B7%25B4%25E5%25B7%25B4%25E6%2589%25B9%25E5%258F%2591%25E7%25BD%2591%26cosite%3Dgdtsogoujj%26trackid%3D885218259884752247730301%26format%3Dnormal%26location%3Dlanding_t4%26q%3D%25E9%2598%25BF%25E9%2587%258C%25E5%25B7%25B4%25E5%25B7%25B42018%25E5%25B9%25B4%26m_kw%3D%25E9%2598%25BF%25E9%2587%258C%25E5%25B7%25B4%25E5%25B7%25B42018%25E5%25B9%25B4%26m_k%3D1086484828%26m_r%3Dxyxrovrn5todo%26m_c%3D8391167495%26m_ac%3D25548390%26m_a%3D8391166818%26m_p%3D8391128650%26m_clk%3D337se2qcaaallwr3na2q
+          - generic [ref=e343]:
+            - text: 点击提交视为同意
+            - link "《用户协议》" [ref=e344] [cursor=pointer]:
+              - /url: https://terms.alicdn.com/legal-agreement/terms/c_end_product_protocol/20231031181421701/20231031181421701.html?spm=a261y.25179003.0.0.56883aa7cMyD2U
+          - generic [ref=e345] [cursor=pointer]: 提交采购需求
+      - generic [ref=e347] [cursor=pointer]:
+        - img "采购助手" [ref=e348]
+        - generic [ref=e349]: 采购助手
+    - generic [ref=e352]: 为你推荐根据您的浏览，实时为您推荐爆款产品
+    - generic [ref=e355]:
+      - img [ref=e357]
+      - generic [ref=e358]:
+        - generic [ref=e359]:
+          - link "阿里巴巴集团" [ref=e360] [cursor=pointer]:
+            - /url: https://www.alibabagroup.com/cn/global/home
+          - text: "|"
+          - link "阿里巴巴国际站" [ref=e361] [cursor=pointer]:
+            - /url: https://www.alibaba.com/
+          - text: "|"
+          - link "1688" [ref=e362] [cursor=pointer]:
+            - /url: https://www.1688.com/
+          - text: "|"
+          - link "全球速卖通" [ref=e363] [cursor=pointer]:
+            - /url: https://www.aliexpress.com/
+          - text: "|"
+          - link "淘宝网" [ref=e364] [cursor=pointer]:
+            - /url: https://www.taobao.com/
+          - text: "|"
+          - link "天猫" [ref=e365] [cursor=pointer]:
+            - /url: https://www.tmall.com/
+          - text: "|"
+          - link "一淘" [ref=e366] [cursor=pointer]:
+            - /url: https://www.etao.com/
+          - text: "|"
+          - link "飞猪" [ref=e367] [cursor=pointer]:
+            - /url: https://www.fliggy.com/
+          - text: "|"
+          - link "阿里妈妈" [ref=e368] [cursor=pointer]:
+            - /url: https://www.alimama.com/index.htm
+          - text: "|"
+          - link "阿里云计算" [ref=e369] [cursor=pointer]:
+            - /url: https://www.aliyun.com/
+          - text: "|"
+          - link "AliOS" [ref=e370] [cursor=pointer]:
+            - /url: http://www.alios.cn/
+        - generic [ref=e371]:
+          - link "阿里通信" [ref=e372] [cursor=pointer]:
+            - /url: https://aliqin.tmall.com/
+          - text: "|"
+          - link "UC" [ref=e373] [cursor=pointer]:
+            - /url: http://www.uc.cn/
+          - text: "|"
+          - link "支付宝" [ref=e374] [cursor=pointer]:
+            - /url: https://www.alipay.com/
+          - text: "|"
+          - link "钉钉" [ref=e375] [cursor=pointer]:
+            - /url: https://www.dingtalk.com/
+          - text: "|"
+          - link "旺旺" [ref=e376] [cursor=pointer]:
+            - /url: https://wangwang.taobao.com/
+          - text: "|"
+          - link "阿里健康" [ref=e377] [cursor=pointer]:
+            - /url: https://www.alihealth.cn/
+          - text: "|"
+          - link "跨境供应链" [ref=e378] [cursor=pointer]:
+            - /url: https://onetouch.alibaba.com/
+          - text: "|"
+          - link "Lazada" [ref=e379] [cursor=pointer]:
+            - /url: https://taobao.lazada.sg/
+          - text: "|"
+          - link "达摩院" [ref=e380] [cursor=pointer]:
+            - /url: https://damo.alibaba.com/
+          - text: "|"
+          - link "阿里安全" [ref=e381] [cursor=pointer]:
+            - /url: https://s.alibaba.com/?scene=clinks
+          - text: "|"
+          - link "天猫淘宝海外" [ref=e382] [cursor=pointer]:
+            - /url: https://g-sellercenter.taobao.com/mail
+        - generic [ref=e383]:
+          - link "关于阿里巴巴" [ref=e384] [cursor=pointer]:
+            - /url: https://www.alibabagroup.com/cn/global/home
+          - text: "|"
+          - link "联系我们" [ref=e385] [cursor=pointer]:
+            - /url: https://114.1688.com/kf/contact.html
+          - text: "|"
+          - link "知识产权保护" [ref=e386] [cursor=pointer]:
+            - /url: https://page.1688.com/trust/Intellectual.html
+          - text: "|"
+          - link "著作权与商标声明" [ref=e387] [cursor=pointer]:
+            - /url: https://rule.1688.com/policy/copyright.html
+          - text: "|"
+          - link "法律声明" [ref=e388] [cursor=pointer]:
+            - /url: https://terms.alicdn.com/legal-agreement/terms/suit_bu1_b2b/suit_bu1_b2b201802011532_36855.html
+          - text: "|"
+          - link "服务条款" [ref=e389] [cursor=pointer]:
+            - /url: https://terms.alicdn.com/legal-agreement/terms/suit_bu1_b2b/suit_bu1_b2b201703271338_74297.html
+          - text: "|"
+          - link "隐私政策" [ref=e390] [cursor=pointer]:
+            - /url: https://terms.alicdn.com/legal-agreement/terms/suit_bu1_b2b/suit_bu1_b2b201703271337_94551.html
+          - text: "|"
+          - link "网站导航" [ref=e391] [cursor=pointer]:
+            - /url: https://www.1688.com/alphabet_sitemap.html
+        - generic [ref=e392]:
+          - link "医疗器械网络交易服务第三方平台备案证:(浙)网械平台备字[2018]第00001号" [ref=e393] [cursor=pointer]:
+            - /url: https://img.alicdn.com/imgextra/i3/O1CN01hNfg1R1RiuwwbcXYs_!!6000000002146-0-tps-884-1252.jpg
+          - text: 广播电视节目制作经营许可证:(浙)字第00523号
+          - link "增值电信业务经营许可证:浙B2-20120091-2" [ref=e394] [cursor=pointer]:
+            - /url: http://beian.miit.gov.cn
+        - generic [ref=e395]:
+          - text: 浙江省网络食品销售第三方平台提供者备案:浙网食A33010005互联网药品信息服务资格证书:(浙)-经营性-2021-0209
+          - img [ref=e396]
+          - link "浙公网安备 33010002000121号" [ref=e397] [cursor=pointer]:
+            - /url: http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010002000121
+        - generic [ref=e398]: 出版物网络交易平台服务经营备案证:新出发浙备字第2017001号信息网络传播视听许可证:1109366号
+        - generic [ref=e399]:
+          - generic [ref=e400]: © 2010-2026 1688.com 版权所有
+          - text: 互联网违法和不良信息举报中心:0571-81683755 blxx@list.alibaba-inc.com
+        - generic [ref=e401]:
+          - link "网络警察" [ref=e402] [cursor=pointer]:
+            - /url: http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010002000121
+          - link "网络工商" [ref=e403] [cursor=pointer]:
+            - /url: http://idinfo.zjamr.zj.gov.cn//bscx.do?method=lzxx&id=3301083301080000022169
+          - link "可信网站" [ref=e404] [cursor=pointer]:
+            - /url: https://ss.knet.cn/verifyseal.dll?sn=e12051133010020989301459
+          - link "违法和不良信息举报中心" [ref=e405] [cursor=pointer]:
+            - /url: http://www.12377.cn/
+          - link "违法和不良信息举报中心APP下载" [ref=e406] [cursor=pointer]:
+            - /url: http://www.12377.cn/node_548446.htm
+          - img "无障碍勋章" [ref=e407]

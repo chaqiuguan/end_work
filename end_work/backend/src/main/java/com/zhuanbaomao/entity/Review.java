@@ -1,0 +1,22 @@
+package com.zhuanbaomao.entity;
+
+import com.baomidou.mybatisplus.annotation.*;
+import lombok.Data;
+import java.time.LocalDateTime;
+
+@Data
+@TableName("review")
+public class Review {
+    @TableId(type = IdType.AUTO)
+    private Long id;
+    private Long userId;
+    private Long productId;
+    private Long orderId;
+    private String content;
+    private String images;
+    private Integer rating;
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createdAt;
+    @TableLogic
+    private Integer deleted;
+}

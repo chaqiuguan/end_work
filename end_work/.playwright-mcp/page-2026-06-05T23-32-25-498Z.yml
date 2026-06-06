@@ -1,0 +1,58 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - banner [ref=e5]:
+      - generic [ref=e6]:
+        - link "🐟 转鱼宝猫" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e8]: 🐟
+          - generic [ref=e9]: 转鱼宝猫
+        - generic [ref=e12]:
+          - img [ref=e15]
+          - textbox "搜索商品..." [ref=e17]
+        - generic [ref=e19]:
+          - link "全部商品" [ref=e20] [cursor=pointer]:
+            - /url: /product/list
+            - img [ref=e22]
+            - generic [ref=e24]: 全部商品
+          - link "购物车" [ref=e25] [cursor=pointer]:
+            - /url: /cart
+            - img [ref=e28]
+            - generic [ref=e30]: 购物车
+          - link "登录" [ref=e31] [cursor=pointer]:
+            - /url: /login
+            - button "登录" [ref=e32]:
+              - generic [ref=e33]: 登录
+    - navigation [ref=e34]:
+      - generic [ref=e35]:
+        - link "首页" [ref=e36] [cursor=pointer]:
+          - /url: /
+        - link "🔥 全部 All" [ref=e38] [cursor=pointer]:
+          - /url: /product/list
+          - generic [ref=e39]: 🔥
+          - generic [ref=e40]:
+            - generic [ref=e41]: 全部
+            - generic [ref=e42]: All
+  - main [ref=e43]:
+    - generic [ref=e44]:
+      - generic [ref=e46]:
+        - complementary [ref=e47]:
+          - heading "品类市场" [level=3] [ref=e48]
+          - list [ref=e49]
+        - generic [ref=e50]:
+          - heading "热卖榜单" [level=2] [ref=e51]
+          - generic [ref=e52]:
+            - generic [ref=e54] [cursor=pointer]:
+              - generic [ref=e56]: 热卖排行
+              - generic [ref=e57]: ›
+            - generic [ref=e60] [cursor=pointer]:
+              - generic [ref=e62]: 新品首发
+              - generic [ref=e63]: ›
+            - generic [ref=e66] [cursor=pointer]:
+              - generic [ref=e68]: 好物精选
+              - generic [ref=e69]: ›
+            - generic [ref=e72] [cursor=pointer]:
+              - generic [ref=e74]: 折扣专区
+              - generic [ref=e75]: ›
+      - heading "热门好物" [level=2] [ref=e78]
+  - contentinfo [ref=e112]:
+    - paragraph [ref=e113]: © 2024 转鱼宝猫 — 闲转好物，物尽其用
