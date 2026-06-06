@@ -88,7 +88,17 @@
       "Bash(curl -s -o /dev/null -w \"cutout_0: %{http_code} %{size_download}B\\\\n\" http://localhost:3000/banners/cutout_0.png)",
       "Bash(curl -s -o /dev/null -w \"cutout_3: %{http_code} %{size_download}B\\\\n\" http://localhost:3000/banners/cutout_3.png)",
       "Bash(curl -s -o /dev/null -w \"cutout_6: %{http_code} %{size_download}B\\\\n\" http://localhost:3000/banners/cutout_6.png)",
-      "Bash(git remote *)"
+      "Bash(git remote *)",
+      "Bash(python3 -c \"from PIL import Image; print\\('Pillow可用'\\)\")",
+      "Bash(pip3 install *)",
+      "Bash(python3 -c \"from PIL import Image; print\\('ok'\\)\")",
+      "Bash(cp \"D:/NEUwork/web/p/shanping/Instant Pot Duo Plus 9合1多功能锅 6夸脱.png\" \"d:/NEUwork/web/end_work/frontend/public/products/85.png\")",
+      "Bash(cp \"D:/NEUwork/web/p/shanping/Manduka PRO 瑜伽垫 6mm 黑色.png\" \"d:/NEUwork/web/end_work/frontend/public/products/87.png\")",
+      "Bash(cp \"D:/NEUwork/web/p/shanping/Osprey Atmos AG 65 男款登山背包.png\" \"d:/NEUwork/web/end_work/frontend/public/products/89.png\")",
+      "Bash(cp \"D:/NEUwork/web/p/shanping/Peak Design 碳纤维旅行三脚架.png\" \"d:/NEUwork/web/end_work/frontend/public/products/94.png\")",
+      "Bash(cp \"D:/NEUwork/web/p/shanping/Ruggable Kamran 可机洗地毯 波西米亚风 8x10英尺.png\" \"d:/NEUwork/web/end_work/frontend/public/products/81.png\")",
+      "Bash(cp \"D:/NEUwork/web/p/Concept2 Model D PM5 划船机.jpg\" \"d:/NEUwork/web/end_work/frontend/public/products/88.jpg\")",
+      "Bash(cp \"D:/NEUwork/web/p/iPhone 15 128GB 黑色.jpg\" \"d:/NEUwork/web/end_work/frontend/public/products/1.jpg\")"
     ],
     "additionalDirectories": [
       "d:\\NEUwork\\web\\end_work\\backend",
